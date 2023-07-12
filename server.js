@@ -11,7 +11,7 @@ import "./loadEnvironment.mjs";
 import "express-async-errors";
 import posts from "./routes/posts.mjs";
 import db from "./db/conn.mjs";
-
+console.log("success loading db");
 
 
 
