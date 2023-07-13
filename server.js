@@ -11,7 +11,6 @@ import "./loadEnvironment.mjs";
 import "express-async-errors";
 import posts from "./routes/posts.mjs";
 import db from "./db/conn.mjs";
-console.log("22222success loading db");
 
 
 
@@ -20,7 +19,7 @@ var app = express(),
 
 // __dirname is path.resolve()
 //publicDir = path.join(__dirname,'public');
-publicDir = path.join(path.resolve(),'public');
+publicDir = path.join(path.resolve(),'frontend/build');
 
 
 app.use(cors());

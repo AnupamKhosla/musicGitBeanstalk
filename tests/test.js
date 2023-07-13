@@ -18,7 +18,7 @@ const request = supertest(app);
 describe('Tests app', function() {
   it('verifies get', function(done) {
     request.get('/').expect(200).end(function(err, result) {
-      test.string(result.text).contains('Congratulations');
+      test.string(result.text).contains('Musicsheets'); // Musicsheets would be in h1 tag and/or logo
       test.value(result).hasHeader('content-type', 'text/html; charset=UTF-8');
       done(err);
     });
