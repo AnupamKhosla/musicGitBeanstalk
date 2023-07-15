@@ -8,13 +8,9 @@ const router = express.Router();
 router.get("/", async (req, res) => {
   let collection = await db.collection("posts");
   let results = await collection.find({})
-    .limit(2)
+    .limit(50)
     .toArray();
-    //truncate res array to 10chars
-    results.forEach((result) => {
-      result.content = result.content.substring(0, 10);
-    });
-    
+
   res.send(results).status(200);
 });
 
