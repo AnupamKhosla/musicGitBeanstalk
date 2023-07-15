@@ -8,7 +8,7 @@ export default function App() {
 
   useEffect(() => {
     const loadPosts = async () => {
-      let results = await fetch(`${baseUrl}/posts/latest`).then(resp => resp.json());
+      let results = await fetch(`${baseUrl}/posts`).then(resp => resp.json());
       setPosts(results);
     }
 
