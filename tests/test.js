@@ -18,8 +18,7 @@ import { promises as fs } from 'fs';
 
 (async () => {    
     if(!!process.env.PARTITION) { //you might use NODE_ENV
-      await fs.writeFile('./frontend/src/config.js', `export const baseUrl = 'musicsheets.in';`);
-      throw new Error('test');
+      await fs.writeFile('./frontend/src/config.js', `export const baseUrl = 'musicsheets.in';`);      
     }
     else {
       await fs.writeFile('./frontend/src/config.js', `export const baseUrl = 'localhost:${PORT}';`);
