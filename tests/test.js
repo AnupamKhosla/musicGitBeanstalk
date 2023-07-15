@@ -36,7 +36,7 @@ describe('Tests app', function() {
       //print current directory
       console.log('current dir: ' + process.cwd());
 
-      fs.writeFileSync('./frontend/src/config.js', `export const baseUrl = '${url}:${PORT};'`);
+      fs.writeFileSync('./frontend/src/config.js', `export const baseUrl = '${url}:${PORT}';`);
 
 
 
