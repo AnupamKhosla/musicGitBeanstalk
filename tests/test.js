@@ -38,7 +38,9 @@ describe('Tests app', function() {
 
       fs.writeFileSync('./frontend/src/config.js', `export const baseUrl = '${url}:${PORT}';`);
 
-
+      console.log(url);
+      //throw error
+      throw new Error('error');
 
 
       done(err);
