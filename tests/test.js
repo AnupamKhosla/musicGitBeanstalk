@@ -9,8 +9,17 @@
 import supertest from 'supertest';
 import test from 'unit.js';
 import app from '../server.js';
-import fs from 'fs';
 import { PORT } from '../server.js';
+import { promises as fs } from 'fs';
+
+(async () => {    
+    if(!!process.env.NODE_ENV) {
+      await fs.writeFile('./frontend/src/config.js', `export const baseUrl = 'musicsheets.in:${PORT}';`);
+    }
+    else {
+      await fs.writeFile('./frontend/src/config.js', `export const baseUrl = 'localhost:${PORT}';`);
+    }
+})();
 
 
 
@@ -20,13 +29,7 @@ describe('Tests app', function() {
   it('verifies get', function(done) {
     request.get('/').expect(200).end(function(err, result) {
       test.string(result.text).contains('Musicsheets');
-      test.value(result).hasHeader('content-type', 'text/html; charset=UTF-8');
-      if(!!process.env.NODE_ENV) {
-        fs.writeFileSync('./frontend/src/config.js', `export const baseUrl = 'musicsheets.in:${PORT}';`);
-      }
-      else {
-        fs.writeFileSync('./frontend/src/config.js', `export const baseUrl = 'localhost:${PORT}';`);
-      }
+      test.value(result).hasHeader('content-type', 'text/html; charset=UTF-8');      
       done(err);
     });
   });
