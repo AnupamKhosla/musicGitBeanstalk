@@ -11,6 +11,8 @@ import test from 'unit.js';
 import app from '../server.js';
 import { PORT } from '../server.js';
 import { promises as fs } from 'fs';
+console.log(process.env.NODE_ENV);
+throw new Error('test');
 
 (async () => {    
     if(!!process.env.NODE_ENV) {
