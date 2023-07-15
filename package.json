@@ -18,6 +18,6 @@
     },
     "scripts": {
         "start": "node server.js",
-        "test": "mocha --recursive tests --exit && cd frontend/src && npm run build && cd ../"
+        "test": "mocha --recursive tests --exit && cd frontend/src && npm install && npm run build && cd ../"
     }
 }
