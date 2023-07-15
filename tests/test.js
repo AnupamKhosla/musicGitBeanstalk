@@ -12,13 +12,14 @@ import app from '../server.js';
 import { PORT } from '../server.js';
 import { promises as fs } from 'fs';
 
-console.log(process.env);
-throw new Error('test');
+//console.log(process.env);
+
 
 
 (async () => {    
     if(!!process.env.PARTITION) { //you might use NODE_ENV
-      await fs.writeFile('./frontend/src/config.js', `export const baseUrl = 'musicsheets.in:${PORT}';`);
+      await fs.writeFile('./frontend/src/config.js', `export const baseUrl = 'musicsheets.in';`);
+      throw new Error('test');
     }
     else {
       await fs.writeFile('./frontend/src/config.js', `export const baseUrl = 'localhost:${PORT}';`);
