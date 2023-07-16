@@ -20,9 +20,15 @@ productionDir = path.join(path.resolve(),'frontend/build');
 
 
 app.use(cors());
-app.use(express.static(productionDir)); // for live server use build folder of react frontend
-
+//app.use(express.static(productionDir)); // for live server use build folder of react frontend
+//app.use("/", express.static("/")); 
 // Load the /posts routes
+
+app.get('/', function(req, res) {
+  res.send('Hello World');
+});
+
+
 app.use("/posts", posts);
 
 
