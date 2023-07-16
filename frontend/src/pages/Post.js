@@ -18,14 +18,14 @@ export default function App() {
   const navigate = useNavigate();
 
   const deletePost = async () => {
-    await fetch(`${baseUrl}/posts/${params.id}`, {
+    await fetch(window.location.protocol + `//${baseUrl}/posts/${params.id}`, {
       method: "DELETE"
     });
     return navigate("/");
   }
 
   const handleNewComment = async () => {
-    await fetch(`${baseUrl}/posts/comment/${params.id}`, {
+    await fetch(window.location.protocol + `//${baseUrl}/posts/comment/${params.id}`, {
       method: "PATCH",
       headers: {
         "content-type": "application/json"
@@ -33,9 +33,9 @@ export default function App() {
       body: JSON.stringify({
         author, body
       })
-    });
+    }).then(resp => console.log(resp.json())  );
 
-    let result = await fetch(`${baseUrl}/posts/${params.id}`).then(resp => resp.json());
+    let result = await fetch(window.location.protocol + `//${baseUrl}/posts/${params.id}`).then(resp => resp.json());
     setPost(result);
 
     setAuthor("");
@@ -44,13 +44,15 @@ export default function App() {
   }
 
   useEffect(() => {
+    console.log(window.location.protocol + `//${baseUrl}/posts/${params.id}`);
     const loadPost = async () => {
-      let results = await fetch(`${baseUrl}/posts/${params.id}`).then(resp => resp.json());
+      let results = await fetch(window.location.protocol + `//${baseUrl}/posts/${params.id}`).then(resp => resp.json());
+      console.log(results);
       setPost(results);
     }
 
     loadPost();
-  }, []);
+  }, [params.id]);
 
   return (
     <React.Fragment>

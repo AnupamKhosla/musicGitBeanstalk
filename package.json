@@ -14,10 +14,11 @@
     "devDependencies": {
         "mocha": "^10.2.0",
         "supertest": "^6.3.3",
-        "unit.js": "^2.1.1"
+        "unit.js": "^2.1.1",
+        "concurrently": "^8.2.0"
     },
     "scripts": {
-        "start": "node server.js",
+        "start": "concurrently 'node server.js' 'cd frontend/src && npm start'",
         "test": "mocha --recursive tests --exit && cd frontend/src && npm install && npm run build && cd ../"
     }
 }

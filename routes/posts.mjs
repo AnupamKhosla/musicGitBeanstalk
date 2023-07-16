@@ -27,10 +27,10 @@ router.get("/latest", async (req, res) => {
 
 // Get a single post
 router.get("/:id", async (req, res) => {
+  //res.send({_id: new ObjectId(req.params.id)}).status(200);
   let collection = await db.collection("posts");
-  let query = {_id: ObjectId(req.params.id)};
+  let query = {_id: new ObjectId(req.params.id)}; //ObjectId behaviour is changed to include "new" in latest mongodb driver
   let result = await collection.findOne(query);
-
   if (!result) res.send("Not found").status(404);
   else res.send(result).status(200);
 });
@@ -46,20 +46,20 @@ router.post("/", async (req, res) => {
 
 // Update the post with a new comment
 router.patch("/comment/:id", async (req, res) => {
-  const query = { _id: ObjectId(req.params.id) };
+  const query = { _id: new ObjectId(req.params.id) };
   const updates = {
     $push: { comments: req.body }
   };
 
   let collection = await db.collection("posts");
-  let result = await collection.updateOne(query, updates);
+  //let result = await collection.updateOne(query, updates);
 
-  res.send(result).status(200);
+  res.send(updates).status(200);
 });
 
 // Delete an entry
 router.delete("/:id", async (req, res) => {
-  const query = { _id: ObjectId(req.params.id) };
+  const query = { _id: new ObjectId(req.params.id) };
 
   const collection = db.collection("posts");
   let result = await collection.deleteOne(query);

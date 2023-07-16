@@ -16,18 +16,16 @@ import db from "./db/conn.mjs";
 var PORT = process.env.PORT || 5050;
 var app = express(),
 
-publicDir = path.join(path.resolve(),'frontend/build');
+productionDir = path.join(path.resolve(),'frontend/build');
 
 
 app.use(cors());
-app.use(express.static(publicDir));
-
-//app.use(express.json());
+app.use(express.static(productionDir)); // for live server use build folder of react frontend
 
 // Load the /posts routes
 app.use("/posts", posts);
 
-console.log(process.env.NODE_ENV);
+
 
 
 
@@ -41,7 +39,7 @@ app.use((err, _req, res, next) => {
 
 // start the Express server
 app.listen(PORT, () => {
-  console.log(`Success! Server is running on port: ${PORT}`);
+  console.log(`Success! backend server is running on port: ${PORT} \n frontend is working at 3000. Use localhost:3000 for developement work`);
   //get server url by making curl request
 
 

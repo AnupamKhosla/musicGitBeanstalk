@@ -1,5 +1,25 @@
-Welcome to the AWS CodeStar sample web application
+##Commands
+
+kill port on linux:        kill -9 $(lsof -t -i:8080)
+test app:                  npm test
+start development work:    npm start
+
+Use only localhost:3000 for development work. localhost:5050  for production work.
+
+
+Welcome to the musicsheets.in project
 ==================================================
+
+This project builds upon https://github.com/mongodb-developer/mongodb-express-rest-api-example it is currenlty hosted on amazon web services beanstalk environment. The current code is compatibe with aws linux 2. 
+
+A few things have changed with newer node and mongodb version, so this project imporove the former git repo.
+
+Currently adding comments doesn't work.
+
+
+
+
+
 
 This sample code helps get you started with a simple Express web application
 deployed by AWS Elastic Beanstalk and AWS CloudFormation.

@@ -3,13 +3,13 @@ import { H2 } from "@leafygreen-ui/typography";
 import PostSummary from "../components/PostSummary";
 import { baseUrl } from "../config";
 
-export default function App() {
 
+export default function App() {
   let [posts, setPosts] = useState([]);
 
   useEffect(() => {
     const loadPosts = async () => {
-      let results = await fetch(`${baseUrl}/posts/`).then(resp => resp.json());
+      let results = await fetch(window.location.protocol + `//${baseUrl}/posts/`).then(resp => resp.json());
       setPosts(results);
     }
 

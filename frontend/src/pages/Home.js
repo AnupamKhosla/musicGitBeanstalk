@@ -4,13 +4,12 @@ import PostSummary from "../components/PostSummary";
 import { baseUrl } from "../config";
 
 
-
 export default function App() {
   let [posts, setPosts] = useState([]);
 
   useEffect(() => {
     const loadPosts = async () => {
-      let results = await fetch(window.location.protocol + `//${baseUrl}/posts`).then(resp => resp.json());
+      let results = await fetch(window.location.protocol + `//${baseUrl}/posts/latest`).then(resp => resp.json());
       setPosts(results);
     }
 
@@ -19,7 +18,7 @@ export default function App() {
 
   return (
     <React.Fragment>
-      <H2>Latest Articles</H2>
+      <H2>Latest Articles XX</H2>
       <div>
         {posts.map(post => {
           return(
