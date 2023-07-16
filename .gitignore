@@ -1,8 +1,8 @@
 node_modules
 .env
 frontend/node_modules
-frontend/build 
-frontend/build/*
+#frontend/build 
+#frontend/build/*
 # build folder is create programmatically on production server
 # Elastic Beanstalk Files
 .elasticbeanstalk/*
