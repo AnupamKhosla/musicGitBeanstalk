@@ -12,7 +12,7 @@ import app from '../server.js';
 import { PORT } from '../server.js';
 import { promises as fs } from 'fs';
 
-//console.log(process.env);
+console.log(process.env);
 
 
 
