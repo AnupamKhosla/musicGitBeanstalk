@@ -7,7 +7,7 @@
     "dependencies": {
         "cors": "^2.8.5",
         "dotenv": "^16.3.1",
-        "express": "4.16.2",
+        "express": "4.18.2",
         "express-async-errors": "^3.1.1",
         "mongodb": "^5.7.0"
     },
@@ -15,9 +15,10 @@
         "mocha": "^10.2.0",
         "supertest": "^6.3.3",
         "unit.js": "^2.1.1",
-        "concurrently": "=7.0.0"
+        "concurrently": "^8.2.0"
     },
     "scripts": {
+        "start": "node server.js",
         "start_dev": "concurrently 'node server.js' 'cd frontend/src && npm start'",
         "test": "mocha --recursive tests --exit && cd frontend/src && npm install && npm run build && cd ../",
         "setBaseUrl": "node setBaseUrl.js"
