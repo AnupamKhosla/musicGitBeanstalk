@@ -13,16 +13,16 @@ import posts from "./routes/posts.mjs";
 import db from "./db/conn.mjs";
 
 
-var PORT = process.env.PORT || 5050;
-var app = express(),
+const PORT = process.env.PORT || 5050;
+const app = express();
 
-productionDir = path.join(path.resolve(),'frontend/build');
-
+const productionDir = path.join(path.resolve(),'frontend/build');
+const devDir = path.join(path.resolve(),'frontend/public');
 
 app.use(cors());
-//app.use(express.static(productionDir)); // for live server use build folder of react frontend
-//app.use("/", express.static("/")); 
-// Load the /posts routes
+app.use(express.static(productionDir)); // for live server use build folder of react frontend
+app.use(express.static(devDir)); // for dev server use public folder of react frontend
+
 
 app.get('/', function(req, res) {
   res.send('Hello World');

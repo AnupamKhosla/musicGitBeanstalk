@@ -10,8 +10,6 @@ import supertest from 'supertest';
 import test from 'unit.js';
 import app from '../server.js';
 
-console.log(process.env);
-
 
 const request = supertest(app);
 
