@@ -13,7 +13,7 @@ import posts from "./routes/posts.mjs";
 import db from "./db/conn.mjs";
 
 
-const PORT = process.env.PORT || 80;
+const PORT = process.env.PORT || 5050;
 const app = express();
 
 const productionDir = path.join(path.resolve(),'frontend/build');
