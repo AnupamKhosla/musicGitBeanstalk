@@ -21,6 +21,7 @@
         "start": "node server.js",
         "start_dev": "concurrently 'node server.js' 'cd frontend/src && npm start'",
         "test": "mocha --recursive tests --exit && cd frontend/src && npm install && npm run build && cd ../",
+        "test_org": "mocha --recursive tests --exit",
         "setBaseUrl": "node setBaseUrl.js"
     }
 }
