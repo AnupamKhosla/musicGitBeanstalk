@@ -33,6 +33,7 @@ phases:
       # - sed -i.bak 's/\$PARTITION\$/'${PARTITION}'/g;s/\$AWS_REGION\$/'${AWS_REGION}'/g;s/\$ACCOUNT_ID\$/'${ACCOUNT_ID}'/g;s/\$PROJECT_ID\$/'${PROJECT_ID}'/g' template-export.yml
 
   artifacts:
+    type: zip    
     files:
       - '**/*'
 
