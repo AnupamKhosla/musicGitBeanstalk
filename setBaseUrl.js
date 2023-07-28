@@ -26,4 +26,4 @@ if (fs.existsSync('./frontend/src/config.js')) {
 }
 else {
   console.log("config.js file not found");
-}
+}  
