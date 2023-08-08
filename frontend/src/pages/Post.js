@@ -24,7 +24,7 @@ export default function App() {
     return navigate("/");
   }
 
-  const handleNewComment = async () => {
+  const handleNewComment = async () => {     
     await fetch(window.location.protocol + `//${baseUrl}/posts/comment/${params.id}`, {
       method: "PATCH",
       headers: {
@@ -33,9 +33,10 @@ export default function App() {
       body: JSON.stringify({
         author, body
       })
-    }).then(resp => console.log(resp.json())  );
+    }).then(resp => console.log(123123, resp.json())  );
 
     let result = await fetch(window.location.protocol + `//${baseUrl}/posts/${params.id}`).then(resp => resp.json());
+    //console.log(result);
     setPost(result);
 
     setAuthor("");
@@ -46,8 +47,7 @@ export default function App() {
   useEffect(() => {
     console.log(window.location.protocol + `//${baseUrl}/posts/${params.id}`);
     const loadPost = async () => {
-      let results = await fetch(window.location.protocol + `//${baseUrl}/posts/${params.id}`).then(resp => resp.json());
-      console.log(results);
+      let results = await fetch(window.location.protocol + `//${baseUrl}/posts/${params.id}`).then(resp => resp.json());      
       setPost(results);
     }
 
@@ -65,12 +65,12 @@ export default function App() {
       <br/><br/>
       {post && post.comments &&
       <ExpandableCard title="Comments">
-        {post.comments.map(comment => {
+        {post.comments.map((comment, index) => {
           return (
-            <p>
+            <div className="test" key={comment.author+index} data-key={comment.author+index}>
               <Body weight="medium">{comment.author} said: </Body>
               <Body>{comment.body}</Body>
-            </p>
+            </div>
           )
         })}
       </ExpandableCard>
@@ -81,6 +81,7 @@ export default function App() {
         buttonText="Save Comment"
         onConfirm={handleNewComment}
         onCancel={() => setShowModal(false)}
+        title=""
       >
         <H2>Add Comment</H2>
         <TextInput

@@ -20,7 +20,7 @@ export default function PostSummary(props) {
       <H3>{props.title}</H3>
       by {props.author} on {(new Date(props.date)).toLocaleDateString()}<br/>
       <Link to={`/post/${props._id}`}>Read More...</Link><br/>
-      {props && props.tags && props.tags.map(tag => (<React.Fragment><Badge variant={getBadgeColor(tag)}>{tag}</Badge> </React.Fragment>))}
+      {props && props.tags && props.tags.map((tag, index) => (<React.Fragment key={tag+index} ><Badge variant={getBadgeColor(tag)}>{tag}</Badge> </React.Fragment>))}
     </Card>
   )
 }

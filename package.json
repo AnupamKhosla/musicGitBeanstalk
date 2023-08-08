@@ -9,17 +9,18 @@
         "dotenv": "^16.3.1",
         "express": "4.18.2",
         "express-async-errors": "^3.1.1",
-        "mongodb": "^5.7.0"
+        "mongodb": "^5.7.0",
+        "nodemon": "^3.0.1"
     },
     "devDependencies": {
+        "concurrently": "^8.2.0",
         "mocha": "^10.2.0",
         "supertest": "^6.3.3",
-        "unit.js": "^2.1.1",
-        "concurrently": "^8.2.0"
+        "unit.js": "^2.1.1"
     },
     "scripts": {
         "start": "node server.js",
-        "start_dev": "concurrently 'node server.js' 'cd frontend/src && npm start'",
+        "start_dev": "concurrently 'node --watch server.js' 'cd frontend/src && npm start'",
         "test": "mocha --recursive tests --exit && cd frontend/src && npm install && npm run build && cd ../",
         "setBaseUrl": "node setBaseUrl.js"
     }
