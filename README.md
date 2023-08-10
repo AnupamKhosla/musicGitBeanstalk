@@ -1,10 +1,19 @@
+## About  
+
+This website/project intends to collect all Indian ragas music sheet in one place like a wiki. The website/project is currently in development phase. 
+
+
+
 ## Commands
 
+```
 kill port on linux:        kill -9 $(lsof -t -i:8080)
 test app:                  npm test
 start development work:    npm start
+```
 
-Use only localhost:3000 for development work. localhost:5050  for production work.
+Use only `localhost:3000` for development work. `localhost:5050`  for production testing. `npm test` will create the build folder and run the tests. 
+
 
 
 Welcome to the musicsheets.in project
@@ -12,13 +21,13 @@ Welcome to the musicsheets.in project
 
 This project builds upon https://github.com/mongodb-developer/mongodb-express-rest-api-example it is currenlty hosted on amazon web services beanstalk environment. The current code is compatibe with aws linux 2. 
 
-A few things have changed with newer node and mongodb version, so this project imporove the former git repo.
+A few things have changed with newer node and mongodb versions, so this project imporoves upon the former MERN git repo.
 
-Currently adding comments doesn't work.
-
-
+ - Currently adding comments doesn't work.
 
 
+
+--------------------------------
 
 
 This sample code helps get you started with a simple Express web application

@@ -16,6 +16,12 @@ import db from "./db/conn.mjs";
 const PORT = process.env.PORT || 5050;
 const app = express();
 
+
+app.use(cors());
+app.use(express.json());
+//imp above code for json to work
+
+
 const productionDir = path.join(path.resolve(),'frontend/build');
 const devDir = path.join(path.resolve(),'frontend/public');
 

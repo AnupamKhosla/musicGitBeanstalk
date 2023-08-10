@@ -25,6 +25,9 @@ export default function App() {
   let [toastOpen, setToastOpen] = useState(false);
 
   const handleSubmit = async () => {
+    var test77 = JSON.stringify({
+        author, title, tags: tags.split(","), body
+      });
     await fetch(window.location.protocol + `//${baseUrl}/posts`, {
       method: "POST",
       headers: {
@@ -33,7 +36,7 @@ export default function App() {
       body: JSON.stringify({
         author, title, tags: tags.split(","), body
       })
-    }).then(resp => resp.json());
+    }).then(resp => console.log(resp.json()));
     setAuthor("");
     setTitle("");
     setTags("");
