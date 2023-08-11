@@ -24,10 +24,7 @@ export default function App() {
   let [ body, setBody ] = useState("");
   let [toastOpen, setToastOpen] = useState(false);
 
-  const handleSubmit = async () => {
-    var test77 = JSON.stringify({
-        author, title, tags: tags.split(","), body
-      });
+  const handleSubmit = async () => {    
     await fetch(window.location.protocol + `//${baseUrl}/posts`, {
       method: "POST",
       headers: {

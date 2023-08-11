@@ -33,7 +33,7 @@ export default function App() {
       body: JSON.stringify({
         author, body
       })
-    }).then(resp => console.log(123123, resp.json())  );
+    }).then(resp => console.log(resp.json())  );
 
     let result = await fetch(window.location.protocol + `//${baseUrl}/posts/${params.id}`).then(resp => resp.json());
     //console.log(result);

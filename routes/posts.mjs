@@ -26,8 +26,7 @@ router.get("/latest", async (req, res) => {
 });
 
 // Get a single post
-router.get("/:id", async (req, res) => {
-  //res.send({_id: new ObjectId(req.params.id)}).status(200);
+router.get("/:id", async (req, res) => {  
   let collection = await db.collection("posts");
   let query = {_id: new ObjectId(req.params.id)}; //ObjectId behaviour is changed to include "new" in latest mongodb driver
   let result = await collection.findOne(query);
@@ -46,14 +45,12 @@ router.post("/", async (req, res) => {
 
 // Update the post with a new comment
 router.patch("/comment/:id", async (req, res) => {
-  // const query = { _id: new ObjectId(req.params.id) };
+  const query = { _id: new ObjectId(req.params.id) };
   const updates = {
     $push: { comments: req.body }
   };
-
-  // let collection = await db.collection("posts");
-  // let result = await collection.updateOne(query, updates);
-
+  let collection = await db.collection("posts");
+  let result = await collection.updateOne(query, updates);
   res.send({ comments: req.body }).status(200);
 });
 
