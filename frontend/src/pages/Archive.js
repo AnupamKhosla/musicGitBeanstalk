@@ -1,5 +1,5 @@
 import React, {useState, useEffect} from "react";
-import { H2 } from "@leafygreen-ui/typography";
+//import { H2 } from "@leafygreen-ui/typography";
 import PostSummary from "../components/PostSummary";
 import { baseUrl } from "../config";
 
@@ -18,7 +18,7 @@ export default function App() {
 
   return (
     <React.Fragment>
-      <H2>All Articles</H2>
+      <h2>All Articles</h2>
       <div>
         {posts.map(post => {
           return(

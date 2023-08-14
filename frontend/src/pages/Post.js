@@ -1,11 +1,11 @@
 import React, {useState, useEffect} from "react";
-import ExpandableCard from "@leafygreen-ui/expandable-card";
-import { H2, H3, Body } from "@leafygreen-ui/typography";
-import ConfirmationModal from "@leafygreen-ui/confirmation-modal";
-import TextInput from '@leafygreen-ui/text-input';
-import TextArea from "@leafygreen-ui/text-area";
-import Icon from "@leafygreen-ui/icon";
-import Button from "@leafygreen-ui/button";
+// import ExpandableCard from "@leafygreen-ui/expandable-card";
+// import { H2, H3, Body } from "@leafygreen-ui/typography";
+// import ConfirmationModal from "@leafygreen-ui/confirmation-modal";
+// import TextInput from '@leafygreen-ui/text-input';
+// import TextArea from "@leafygreen-ui/text-area";
+// import Icon from "@leafygreen-ui/icon";
+// import Button from "@leafygreen-ui/Button";
 import { useParams, useNavigate } from "react-router-dom";
 import { baseUrl } from "../config";
 
@@ -56,47 +56,47 @@ export default function App() {
 
   return (
     <React.Fragment>
-      <H2>{post.title}</H2>
-      <H3>by {post.author}</H3>
+      <h2>{post.title}</h2>
+      <h3>by {post.author}</h3>
       <p>Published on {(new Date(post.date)).toLocaleDateString()}</p>
       <p dangerouslySetInnerHTML={{__html: post.body}} />
-      <Button variant="primary" leftGlyph={<Icon glyph="Megaphone" />} onClick={() => setShowModal(true)}>Add Comment</Button>&nbsp;&nbsp;
-      <Button variant="danger" leftGlyph={<Icon glyph="Trash" />} onClick={deletePost}>Delete Post</Button>
+      <button variant="primary" onClick={() => setShowModal(true)}>Add Comment</button>&nbsp;&nbsp;
+      <button variant="danger" onClick={deletePost}>Delete Post</button>
       <br/><br/>
       {post && post.comments &&
-      <ExpandableCard title="Comments">
+      <dialog title="Comments">
         {post.comments.map((comment, index) => {
           return (
             <div className="test" key={comment.author+index} data-key={comment.author+index}>
-              <Body weight="medium">{comment.author} said: </Body>
-              <Body>{comment.body}</Body>
+              <div weight="medium">{comment.author} said: </div>
+              <div>{comment.body}</div>
             </div>
           )
         })}
-      </ExpandableCard>
+      </dialog>
       }
 
-      <ConfirmationModal
+      <dialog
         open={showModal}
         buttonText="Save Comment"
         onConfirm={handleNewComment}
         onCancel={() => setShowModal(false)}
         title=""
       >
-        <H2>Add Comment</H2>
-        <TextInput
+        <h2>Add Comment</h2>
+        <input
             label="Name"
             description="Enter your name"
             onChange={e => setAuthor(e.target.value)}
             value={author}
           />
-          <TextArea
+          <textarea
             label="Comment"
             onChange={e => setBody(e.target.value)}
             rows="5"
             value={body}
           />
-      </ConfirmationModal>
+      </dialog>
     </React.Fragment>
   )
 }

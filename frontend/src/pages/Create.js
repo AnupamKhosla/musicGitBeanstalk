@@ -1,21 +1,21 @@
 import React, {useState} from "react";
-import { H2 } from "@leafygreen-ui/typography";
-import TextInput from '@leafygreen-ui/text-input';
-import TextArea from "@leafygreen-ui/text-area";
-import FormFooter from "@leafygreen-ui/form-footer";
-import Toast from "@leafygreen-ui/toast";
-import { css } from "@leafygreen-ui/emotion";
+// import { H2 } from "@leafygreen-ui/typography";
+// import Textinput from '@leafygreen-ui/text-input';
+// import Textarea from "@leafygreen-ui/text-area";
+// import FormFooter from "@leafygreen-ui/form-footer";
+// import Toast from "@leafygreen-ui/toast";
+// import { css } from "@leafygreen-ui/emotion";
 import { baseUrl } from "../config";
 
-const formStyle = css`
-  height: 100vh;
-  min-width: 767px;
-  margin: 10px;
+// const formStyle = css`
+//   height: 100vh;
+//   min-width: 767px;
+//   margin: 10px;
 
-  input {
-    margin-bottom: 20px;
-  }
-`
+//   input {
+//     margin-bottom: 20px;
+//   }
+// `
 
 export default function App() {
   let [ author, setAuthor ] = useState("");
@@ -44,34 +44,34 @@ export default function App() {
 
   return (
     <React.Fragment>
-      <H2>Write New Post</H2>
-      <form className={formStyle}>
-        <TextInput
+      <h2>Write New Post</h2>
+      <form className="formStyle">
+        <input
           label="Author"
           description="Enter your name"
           onChange={e => setAuthor(e.target.value)}
           value={author}
         />
-        <TextInput
+        <input
           label="Title"
           description="Enter the title for this blog post"
           onChange={e => setTitle(e.target.value)}
           value={title}
         />
-        <TextInput
+        <input
           label="Tags"
           description="Enter tags for the post, comma separated if multiple"
           onChange={e => setTags(e.target.value)}
           value={tags}
         />
-        <TextArea
+        <textarea
           label="Post body"
           description="Write your article. Be creative and have fun!"
           onChange={e => setBody(e.target.value)}
           rows="10"
           value={body}
         />
-        <FormFooter
+        <button
           primaryButton={{
             text: 'Save Blog Post',
             onClick: handleSubmit
@@ -79,7 +79,7 @@ export default function App() {
         />
       </form>
 
-      <Toast
+      <dialog
         variant="success"
         title="Post Created"
         body="Your blog post was successfully created."

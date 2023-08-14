@@ -1,13 +1,13 @@
 import React from "react";
-import Card from "@leafygreen-ui/card";
-import { css } from "@leafygreen-ui/emotion";
-import { H3 } from "@leafygreen-ui/typography";
-import Badge from "@leafygreen-ui/badge";
+//import Card from "@leafygreen-ui/card";
+//import { css } from "@leafygreen-ui/emotion";
+//import { H3 } from "@leafygreen-ui/typography";
+//import Badge from "@leafygreen-ui/badge";
 import { Link } from "react-router-dom";
 
-const cardStyle = css`
-  margin: 1em;
-`
+// const cardStyle = css`
+//   margin: 1em;
+// `
 const badgeColors = ["lightgray", "darkgray", "red", "blue", "green", "yellow"];
 const getBadgeColor = tag => {
   let tagId = tag.split("").map(char => char.charCodeAt(0)).reduce((s,a) => s + a, 0) % 6;
@@ -16,11 +16,13 @@ const getBadgeColor = tag => {
 
 export default function PostSummary(props) {
   return (
-    <Card className={cardStyle}>
-      <H3>{props.title}</H3>
+    <section className="cardStyle">
+      <h3>{props.title}</h3>
       by {props.author} on {(new Date(props.date)).toLocaleDateString()}<br/>
       <Link to={`/post/${props._id}`}>Read More...</Link><br/>
-      {props && props.tags && props.tags.map((tag, index) => (<React.Fragment key={tag+index} ><Badge variant={getBadgeColor(tag)}>{tag}</Badge> </React.Fragment>))}
-    </Card>
+      {props && props.tags && props.tags.map((tag, index) => (<React.Fragment key={tag+index} >
+        <span variant={getBadgeColor(tag)}>{tag}</span> 
+      </React.Fragment>))}
+    </section>
   )
 }
