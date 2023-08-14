@@ -9,7 +9,8 @@ This website/project intends to collect all Indian ragas music sheet in one plac
 ```
 kill port on linux:        kill -9 $(lsof -t -i:8080)
 test app:                  npm test
-start development work:    npm start
+start development work:    npm run start_dev
+start prod env:            npm start
 ```
 
 Use only `localhost:3000` for development work. `localhost:5050`  for production testing. `npm test` will create the build folder and run the tests. 
@@ -23,7 +24,6 @@ This project builds upon https://github.com/mongodb-developer/mongodb-express-re
 
 A few things have changed with newer node and mongodb versions, so this project imporoves upon the former MERN git repo.
 
- - Currently adding comments doesn't work.
 
 
 

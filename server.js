@@ -27,8 +27,8 @@ const devDir = path.join(path.resolve(),'frontend/public');
 
 app.use(cors());
 app.use(express.static(productionDir)); // for live server use build folder of react frontend
-app.use(express.static(devDir)); // for dev server use public folder of react frontend
-
+//app.use(express.static(devDir)); // for dev server use public folder of react frontend
+//no need for devdir, as devdir is served by create react app's own server
 
 app.get('/', function(req, res) {
   res.send('Hello World');
@@ -39,6 +39,10 @@ app.use("/posts", posts);
 
 
 
+// app.use("/archive", posts);
+// app.use("/posts/:id", posts);
+// app.use("/create", posts);
+
 
 
 // Global error handling
@@ -47,6 +51,11 @@ app.use((err, _req, res, next) => {
 });
 
 
+//Handles any requests that don't match the ones above
+app.get('*', (req,res) => {
+    res.sendFile(path.join(path.resolve(),'frontend/build/index.html'));
+    //res.sendFile(path.join(path.resolve(),'frontend/build/');
+});
 
 
 // start the Express server
