@@ -4,7 +4,7 @@ const plugin = require('tailwindcss/plugin')
 module.exports = {
     content: ["./src/**/*.{html,js,jsx,ts,tsx}", "./node_modules/tw-elements/dist/js/**/*.js"],
     darkMode: 'class',
-    important: true,
+    important: false,
     theme: {
         screens: {
             xs: "540px",

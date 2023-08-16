@@ -19,6 +19,7 @@
     "gumshoejs": "^5.1.2",
     "jarallax": "^2.1.3",
     "js-datepicker": "^5.18.2",
+    "opensheetmusicdisplay": "^1.8.2",
     "react": "^18.2.0",
     "react-dom": "latest",
     "react-router-dom": "latest",

@@ -129,7 +129,7 @@ export default function Navigation ({ className }) {
               <div className="container relative">
                   {/*Logo container*/}
                   <Link className="logo" to="/">
-                      <span className="h1">MusicSheets</span>
+                      <span className="h1"> <img className="w-auto h-8 inline"  src="logo.svg" alt="Clef symbol logo"/> MusicSheets</span>
                   </Link>
                   {/*End Logo container*/}
                   <div className="menu-extras">
@@ -151,16 +151,16 @@ export default function Navigation ({ className }) {
                       <li className="inline-block mb-0">
                           <div className="form-icon relative">
                               <i className="uil uil-search text-lg absolute top-1/2 -translate-y-1/2 start-3"></i>
-                              <input type="text" className="form-input sm:w-44 w-28 ps-10 py-2 px-3 h-10 bg-transparent dark:bg-slate-900 dark:text-slate-200 rounded-3xl outline-none border border-gray-200 focus:border-indigo-600 dark:border-gray-800 dark:focus:border-indigo-600 focus:ring-0 bg-white" name="s" id="searchItem" placeholder="Search..." />
+                              <input type="text" className="form-input sm:w-44 w-28 ps-10 py-2 px-3 h-10 bg-transparent dark:bg-slate-900 dark:text-slate-200 rounded-3xl outline-none border border-gray-200 focus:border-rose-600 dark:border-gray-800 dark:focus:border-rose-600 focus:ring-0 bg-white" name="s" id="searchItem" placeholder="Search..." />
                           </div>
                       </li>
                       
               
                       <li className="inline ps-1 mb-0">
                           <Link href="#" to="/create" 
-                          className="px-4 h-9 w-auto inline-flex items-center justify-center tracking-wide align-middle transition duration-500 ease-in-out text-base text-center rounded-full bg-indigo-600 hover:bg-indigo-700 border border-indigo-600 hover:border-indigo-700 text-white"
+                          className="px-4 h-9 w-auto inline-flex items-center justify-center tracking-wide align-middle transition duration-500 ease-in-out text-base text-center rounded-full bg-rose-600 hover:bg-rose-700 border border-rose-600 hover:border-rose-700 text-white"
                           >
-                            Contribute +
+                            Contribute <i className="uil uil-edit text-lg ml-2"></i>
                           </Link>
                       </li>
                   </ul>

@@ -25,14 +25,14 @@
           li{
             &.active {
               > a {
-                @apply text-indigo-600 dark:text-indigo-600 #{!important};
+                @apply text-rose-600 dark:text-rose-600 #{!important};
               }
             }
           }
         }
         &.active {
           .menu-arrow {
-            @apply border-indigo-600 dark:border-indigo-600;
+            @apply border-rose-600 dark:border-rose-600;
           }
         }
       }
@@ -44,20 +44,20 @@
         .has-submenu {
           &:hover {
             /* .submenu-arrow {
-              @apply border-indigo-600 dark:border-indigo-600;
+              @apply border-rose-600 dark:border-rose-600;
             } */
             > .submenu-arrow {
-              @apply border-indigo-600 dark:border-indigo-600;
+              @apply border-rose-600 dark:border-rose-600;
             }
           }
           .submenu {
             .has-submenu{
               &:hover {
                 .submenu-arrow {
-                  @apply border-indigo-600 dark:border-indigo-600;
+                  @apply border-rose-600 dark:border-rose-600;
                 }
                 > .submenu-arrow {
-                  @apply border-indigo-600 dark:border-indigo-600;
+                  @apply border-rose-600 dark:border-rose-600;
                 }
               }
             }
@@ -99,7 +99,7 @@
             @apply w-full top-[6px] -rotate-[45deg] w-full;
           }
           &:hover {
-            @apply bg-indigo-600;
+            @apply bg-rose-600;
           }
         }
       }
@@ -158,13 +158,13 @@
           @apply block text-black dark:text-white text-[13px] bg-transparent font-bold tracking-[1px] leading-6 uppercase px-[14px] #{!important};
           &:hover, 
           &:active {
-            @apply text-indigo-600;
+            @apply text-rose-600;
           }
         }
         &:hover, 
         &.active{
           > a {
-            @apply text-indigo-600 dark:text-indigo-600 #{!important};
+            @apply text-rose-600 dark:text-rose-600 #{!important};
           }
         }
         .submenu.megamenu {
@@ -203,10 +203,10 @@
           &:hover, 
           &.active{
             > a {
-              @apply text-indigo-600;
+              @apply text-rose-600;
             }
             > .menu-arrow {
-              @apply border-indigo-600 dark:border-indigo-600;
+              @apply border-rose-600 dark:border-rose-600;
             }
           }
         }
@@ -234,20 +234,20 @@
             }
             &.active {
               > a {
-                @apply text-indigo-600 dark:text-indigo-600 #{!important};
+                @apply text-rose-600 dark:text-rose-600 #{!important};
               }
             }
             &:hover, 
             &.active{
               > .menu-arrow {
-                @apply border-indigo-600 #{!important};
+                @apply border-rose-600 #{!important};
               }
             }
             
             &:hover, 
             &.active {
               > a {
-                @apply text-indigo-600 dark:text-indigo-600 #{!important};
+                @apply text-rose-600 dark:text-rose-600 #{!important};
               }
             }
           }
@@ -360,7 +360,7 @@
               transition: all 0.3s;
               @apply  py-[10px] px-5 clear-both whitespace-nowrap text-[11px] uppercase tracking-[0.04em] font-bold text-black dark:text-white leading-[17px] block;
               &:hover {
-                @apply text-indigo-600 dark:text-indigo-600 #{!important};
+                @apply text-rose-600 dark:text-rose-600 #{!important};
               }
             }
             ul {
@@ -387,13 +387,13 @@
         }
         &:hover {
           > .menu-arrow {
-            @apply border-indigo-600 dark:border-indigo-600;
+            @apply border-rose-600 dark:border-rose-600;
           }
         }
         &:hover, 
         &.active{
           > a {
-            @apply text-indigo-600 dark:text-indigo-600 #{!important};
+            @apply text-rose-600 dark:text-rose-600 #{!important};
           }
         }
         &.last-elements{
@@ -533,7 +533,7 @@
         > a:hover,
         .submenu li a:hover,
         &.has-submenu.open > a {
-          @apply text-indigo-600;
+          @apply text-rose-600;
         }
       }
     }
@@ -564,7 +564,7 @@
       }
       &.active {
         a {
-          @apply text-indigo-600;
+          @apply text-rose-600;
         }
       }
     }
@@ -661,21 +661,21 @@
         &:hover,
         &.active {
           .navbar-link {
-            @apply text-indigo-600;
+            @apply text-rose-600;
           }
         }
     }
     li{
       &.active {
         a {
-          @apply text-indigo-600;
+          @apply text-rose-600;
         }
       }
       &.account-menu {
         &.active,
         &:hover{
           .navbar-link {
-            @apply text-indigo-600 dark:text-white #{!important};
+            @apply text-rose-600 dark:text-white #{!important};
           }
         }
       }

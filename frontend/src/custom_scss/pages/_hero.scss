@@ -5,7 +5,7 @@
 .background-effect {
     .circles {
         li {
-            @apply absolute block -bottom-[150px] bg-indigo-600/30;
+            @apply absolute block -bottom-[150px] bg-rose-600/30;
             animation: animate 25s linear infinite;
 
             &.brand-img {

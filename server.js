@@ -19,7 +19,7 @@ const app = express();
 
 app.use(cors());
 app.use(express.json());
-//imp above code for json to work
+//important above code for json to work
 
 
 const productionDir = path.join(path.resolve(),'frontend/build');
@@ -54,7 +54,7 @@ app.use((err, _req, res, next) => {
 //Handles any requests that don't match the ones above
 app.get('*', (req,res) => {
     res.sendFile(path.join(path.resolve(),'frontend/build/index.html'));
-    //res.sendFile(path.join(path.resolve(),'frontend/build/');
+    //no need for frontend/public folder, that is served by CRA own 3000_port server
 });
 
 
@@ -62,9 +62,6 @@ app.get('*', (req,res) => {
 app.listen(PORT, () => {
   console.log(`Success! backend server is running on port: ${PORT} \n frontend is working at 3000. Use localhost:3000 for developement work`);
   //get server url by making curl request
-
-
-
 });
 
 export default app;
