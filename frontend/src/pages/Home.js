@@ -23,17 +23,35 @@ export default function App() {
     <React.Fragment>
       <Search />
 
-      <OpenSheetMusicDisplay file={"sample.xml"} />
-
-
-      <h2 className="text-3xl font-bold underline">Latest music sheets</h2>
-      <div>
-        {posts.map(post => {
-          return(
-            <PostSummary {...post} key={post._id} />
-          )
-        })}
-      </div>
+      <h2 className="text-3xl font-bold mt-6 text-center">Example music sheet</h2>
+      <section className="relative">
+        <div className="container relative min-h-[56rem]">           
+          <OpenSheetMusicDisplay file={"sample.xml"} />           
+        </div>           
+      </section>
+      <section className="relative">
+        <div className="container relative">            
+           
+           <div>
+            
+           </div>
+        </div>  
+        <div className="container relative">
+          <h3 className="text-2xl font-bold text-center">Latest music sheets</h3>
+          <div className="grid lg:grid-cols-3 md:grid-cols-2 grid-cols-1 mt-8 gap-[30px]">
+            {posts.map(post => {
+              return(
+                <PostSummary {...post} key={post._id} />
+              )
+            })}   
+          </div>            
+          <div className="grid md:grid-cols-12 grid-cols-1 mt-8 pb-8">
+              <div className="md:col-span-12 text-center">
+                  <a href="page-job-grid.html" className="relative inline-block font-semibold tracking-wide align-middle text-base text-center border-none after:content-[''] after:absolute after:h-px after:w-0 hover:after:w-full after:end-0 hover:after:end-auto after:bottom-0 after:start-0 after:transition-all after:duration-500 text-slate-400 hover:text-indigo-600 after:bg-indigo-600 duration-500 ease-in-out">See More Jobs <i className="uil uil-arrow-right align-middle"></i></a>
+              </div>
+          </div>
+        </div>    
+      </section>
     </React.Fragment>
   )
 }

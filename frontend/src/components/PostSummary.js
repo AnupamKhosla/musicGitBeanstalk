@@ -5,24 +5,32 @@ import React from "react";
 //import Badge from "@leafygreen-ui/badge";
 import { Link } from "react-router-dom";
 
-// const cardStyle = css`
-//   margin: 1em;
-// `
-const badgeColors = ["lightgray", "darkgray", "red", "blue", "green", "yellow"];
-const getBadgeColor = tag => {
-  let tagId = tag.split("").map(char => char.charCodeAt(0)).reduce((s,a) => s + a, 0) % 6;
-  return badgeColors[tagId];
-}
 
 export default function PostSummary(props) {
   return (
-    <section className="cardStyle">
-      <h3>{props.title}</h3>
-      by {props.author} on {(new Date(props.date)).toLocaleDateString()}<br/>
-      <Link to={`/post/${props._id}`}>Read More...</Link><br/>
-      {props && props.tags && props.tags.map((tag, index) => (<React.Fragment key={tag+index} >
-        <span variant={getBadgeColor(tag)}>{tag}</span> 
-      </React.Fragment>))}
-    </section>
-  )
+      <div className="rounded-md shadow dark:shadow-gray-800">
+          <div className="p-6">
+              <a href="search/song/{props.title}" className="title h5 text-lg font-semibold hover:text-rose-600">
+                {props.title} 
+              </a>
+              <p className="text-slate-400 mt-2">
+                <i className="uil uil-clock text-rose-600"></i> Uploaded on {(new Date(props.date)).toLocaleDateString()}
+              </p>
+
+              <div className="mt-4">
+                  <p>
+                    <span className="text-rose-600" >Atist:</span> {props.author}
+                  </p>
+                  <p>
+                    <span className="text-rose-600">Genre:</span> {props.author}
+                  </p>
+              </div>
+          </div>
+
+          <div className="flex items-center p-6 border-t border-gray-100 dark:border-gray-700" >              
+              <Link to={`/post/${props._id}`}>Read More...</Link>              
+          </div>
+      </div>
+    
+  ) 
 }

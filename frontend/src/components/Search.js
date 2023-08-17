@@ -2,7 +2,7 @@
 export default function Search(props) {
 	return (		
 		<>
-			<section className="relative table w-full py-32 lg:py-36 bg-[url('./img/sheet_bg.jpg')] bg-no-repeat bg-center bg-cover">
+			<section className="relative table w-full py-28 bg-[url('./img/sheet_bg.jpg')] bg-no-repeat bg-center bg-cover">
 	            <div className="absolute inset-0 bg-black opacity-80"></div>
 	            <div className="container relative">
 	                <div className="grid grid-cols-1 text-center mt-10">

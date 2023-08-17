@@ -14,29 +14,36 @@ class OpenSheetMusicDisplay extends Component {
         autoResize: this.props.autoResize !== undefined ? this.props.autoResize : true,
         drawTitle: this.props.drawTitle !== undefined ? this.props.drawTitle : true,
       }      
-      this.osmd = new OSMD(this.divRef.current, options); 
-      this.osmd.load(this.props.file).then(() => {        
+      this.osmd = new OSMD(this.divRef.current, options);        
+        
+      this.osmd.load(this.props.file).then(() => {   
+        this.osmd.zoom = 0.75; //zoom not working??        
         this.osmd.render(); 
       });
     }
   
     resize() {
-      this.forceUpdate();
+      //this.forceUpdate();
+      //forceUpdate is not available, secondly needs bind in the constructor
     }
   
     componentWillUnmount() {
       //console.log("OSMD unmount");
-      window.removeEventListener('resize', this.resize);      
+      //window.removeEventListener('resize', this.resize);  
+
     }
   
     componentDidUpdate(prevProps) {
-      //console.log("OSMD update");
+      //OG code conditions
       if (this.props.drawTitle !== prevProps.drawTitle) {
         this.setupOsmd();
       } else {
-      this.osmd.load(this.props.file).then(() => this.osmd.render());
+        this.osmd.load(this.props.file).then(() => {   
+          this.osmd.zoom = 0.75; //zoom not working??        
+          this.osmd.render(); 
+        });
       }
-      window.addEventListener('resize', this.resize);
+      //window.addEventListener('resize', this.resize);
     }
   
     // Called after render
