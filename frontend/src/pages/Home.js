@@ -25,8 +25,8 @@ export default function App() {
 
       <h2 className="text-3xl font-bold mt-6 text-center">Example music sheet</h2>
       <section className="relative">
-        <div className="container relative min-h-[56rem]">           
-          <OpenSheetMusicDisplay file={"sample.xml"} />           
+        <div className="container relative min-h-[40rem]">           
+          <OpenSheetMusicDisplay file={"sheets/chopin_op9.xml"} />           
         </div>           
       </section>
       <section className="relative">
@@ -47,7 +47,16 @@ export default function App() {
           </div>            
           <div className="grid md:grid-cols-12 grid-cols-1 mt-8 pb-8">
               <div className="md:col-span-12 text-center">
-                  <a href="page-job-grid.html" className="relative inline-block font-semibold tracking-wide align-middle text-base text-center border-none after:content-[''] after:absolute after:h-px after:w-0 hover:after:w-full after:end-0 hover:after:end-auto after:bottom-0 after:start-0 after:transition-all after:duration-500 text-slate-400 hover:text-indigo-600 after:bg-indigo-600 duration-500 ease-in-out">See More Jobs <i className="uil uil-arrow-right align-middle"></i></a>
+                  <a 
+                    href="/archive" 
+                    className="relative inline-block font-semibold tracking-wide align-middle 
+                               text-base text-center border-none after:content-[''] after:absolute
+                               after:h-px after:w-0 hover:after:w-full after:end-0 hover:after:end-auto
+                               after:bottom-0 after:start-0 after:transition-all after:duration-500 text-slate-400  
+                               hover:text-rose-600 after:bg-rose-600 duration-500 ease-in-out">
+                      See all sheets 
+                    <i className="uil uil-arrow-right align-middle"></i>
+                  </a>
               </div>
           </div>
         </div>    
