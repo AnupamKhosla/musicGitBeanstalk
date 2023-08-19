@@ -16,7 +16,7 @@ export default function Layout(props) {
         <Outlet />
       </section>
       <footer className="py-3 bg-slate-200">
-        <div className="container text-sm">
+        <div className="container text-sm text-center">
           Designed and developed solely by <a className="text-rose-500 hover:text-rose-600 underline" href="https://www.linkedin.com/in/anupamkhosla/">Anupam Khosla</a>. The&nbsp;
           <a
             className="text-rose-500 hover:text-rose-600 underline"

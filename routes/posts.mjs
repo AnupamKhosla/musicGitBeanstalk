@@ -4,9 +4,9 @@ import { ObjectId } from "mongodb";
 
 const router = express.Router();
 
-// Get a list of 50 posts
+// Get a list of 50 songs
 router.get("/", async (req, res) => {
-  let collection = await db.collection("posts");
+  let collection = await db.collection("songs");
   let results = await collection.find({})
     .limit(50)
     .toArray();
@@ -14,11 +14,11 @@ router.get("/", async (req, res) => {
   res.send(results).status(200);
 });
 
-// Fetches the latest posts
+// Fetches the latest songs
 router.get("/latest", async (req, res) => {
-  let collection = await db.collection("posts");
+  let collection = await db.collection("songs");
   let results = await collection.aggregate([
-    {"$project": {"author": 1, "title": 1, "tags": 1, "date": 1}},
+    {"$project": {"Artist": 1, "sheetName": 1, "Genres": 1, "date": 1}},
     {"$sort": {"date": -1}},
     {"$limit": 6}
   ]).toArray();
@@ -27,7 +27,7 @@ router.get("/latest", async (req, res) => {
 
 // Get a single post
 router.get("/:id", async (req, res) => {  
-  let collection = await db.collection("posts");
+  let collection = await db.collection("songs");
   let query = {_id: new ObjectId(req.params.id)}; //ObjectId behaviour is changed to include "new" in latest mongodb driver
   let result = await collection.findOne(query);
   if (!result) res.send("Not found").status(404);
@@ -36,31 +36,31 @@ router.get("/:id", async (req, res) => {
 
 // Add a new document to the collection
 router.post("/", async (req, res) => {
-  let collection = await db.collection("posts");
+  let collection = await db.collection("songs");
   let newDocument = req.body;
   newDocument.date = new Date();
   let result = await collection.insertOne(newDocument);
   res.send(newDocument).status(204);
 });
 
+
+//We no longer have comments
 // Update the post with a new comment
-router.patch("/comment/:id", async (req, res) => {
-  const query = { _id: new ObjectId(req.params.id) };
-  const updates = {
-    $push: { comments: req.body }
-  };
-  let collection = await db.collection("posts");
-  let result = await collection.updateOne(query, updates);
-  res.send({ comments: req.body }).status(200);
-});
+// router.patch("/comment/:id", async (req, res) => {
+//   const query = { _id: new ObjectId(req.params.id) };
+//   const updates = {
+//     $push: { comments: req.body }
+//   };
+//   let collection = await db.collection("songs");
+//   let result = await collection.updateOne(query, updates);
+//   res.send({ comments: req.body }).status(200);
+// });
 
 // Delete an entry
 router.delete("/:id", async (req, res) => {
   const query = { _id: new ObjectId(req.params.id) };
-
-  const collection = db.collection("posts");
+  const collection = db.collection("songs");
   let result = await collection.deleteOne(query);
-
   res.send(result).status(200);
 });
 
