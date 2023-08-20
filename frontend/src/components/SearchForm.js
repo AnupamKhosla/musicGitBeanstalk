@@ -1,5 +1,32 @@
+//import router
+import { baseUrl } from "../config";
+import { useState, useRef } from "react";
+import { useNavigate } from "react-router-dom";
 
-export default function Search(props) {
+
+
+
+
+export default function SearchForm(props) {
+
+
+	let formRef = useRef(null); //reference to the form element
+	//on submit go to archive page with form input values as get variables
+	let navigate = useNavigate(); //useNavigate is a hook that allows us to navigate to a different page
+	const handleSubmit = async (e) => {
+		e.preventDefault();
+		let songName = formRef.current.songName.value;
+		let artistName = formRef.current.artistName.value;
+		let scaleName = formRef.current.scaleName.value;
+
+		let url = `/search?songName=${songName}&artistName=${artistName}&scaleName=${scaleName}`;
+		navigate(url);
+		if (props.searchSubmitCallback) props.searchSubmitCallback(e);
+	}
+
+
+
+
 	return (		
 		<>
 			<section className="relative table w-full py-28 bg-[url('./img/sheet_bg.jpg')] bg-no-repeat bg-center bg-cover">
@@ -20,7 +47,7 @@ export default function Search(props) {
 	        <div className="container relative -mt-16 z-1">
 	            <div className="grid grid-cols-1">
 	                <div className="p-6 bg-white dark:bg-slate-900 rounded-md shadow-md dark:shadow-gray-800">
-	                    <form action="#">
+	                    <form ref={formRef} action="/archive" onSubmit={handleSubmit}>
 	                        <div className="registration-form relative text-dark text-start">
 	                            <div className="grid lg:grid-cols-4 md:grid-cols-2 grid-cols-1 lg:gap-0 gap-6">	                            	
 	                                <div className="filter-search-form relative ">
@@ -36,14 +63,14 @@ export default function Search(props) {
 	                                <div className="ml-2 filter-search-form relative ">
 	                                    <label htmlFor="artistName" className="font-semibold text-sm mb-2">Artist name</label>
 	                                    <input 
-	                                      name="songName"
-	                                      id="songName"
+	                                      name="artistName"
+	                                      id="artistName"
 	                                      type="text"
 	                                      className="form-input lg:rounded-t-sm lg:rounded-e-none lg:rounded-b-none lg:rounded-s-sm lg:outline-0 w-full filter-input-box bg-gray-100 dark:bg-slate-800 border-0 focus:ring-0"
 	                                      placeholder="E.g. Mozart" />
 	                                </div>
 	                                <div className="ml-2 filter-search-form relative ">
-	                                    <label htmlFor="artistName" className="font-semibold text-sm mb-2">Scale/Raga</label>
+	                                    <label htmlFor="scaleName" className="font-semibold text-sm mb-2">Scale/Raga</label>
 	                                    <input 
 	                                      name="scaleName"
 	                                      id="scaleName"

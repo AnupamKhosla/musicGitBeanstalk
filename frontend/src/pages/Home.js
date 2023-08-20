@@ -1,7 +1,7 @@
 import React, {useState, useEffect} from "react";
 //import { H2 } from "@leafygreen-ui/typography";
 import PostSummary from "../components/PostSummary";
-import Search from "../components/Search";
+import SearchForm from "../components/SearchForm";
 import { baseUrl } from "../config";
 // import opensheetmusicdisplay
 import OpenSheetMusicDisplay from "../components/OpenSheetMusicDisplay";
@@ -21,7 +21,7 @@ export default function App() {
 
   return (
     <React.Fragment>
-      <Search />
+      <SearchForm />
 
       <h2 className="text-3xl font-bold mt-6 text-center">Example music sheet</h2>
       <section className="relative">

@@ -6,10 +6,24 @@ const router = express.Router();
 
 // Get a list of 50 songs
 router.get("/", async (req, res) => {
+  //check for get variables in the url  
+  let query = {};
+  if (req.query.songName) query.sheetName = {$regex: req.query.songName, $options: "i"};
+  if (req.query.artistName) query.Artist = {$regex: req.query.artistName, $options: "i"};
+  if (req.query.scaleName) query.scaleName = {$regex: req.query.scaleName, $options: "i"};
+  if (req.query.genre) query.Genres = {$regex: req.query.genre, $options: "i"};
+  if (req.query.date) query.date = {$regex: req.query.date, $options: "i"};
+
   let collection = await db.collection("songs");
-  let results = await collection.find({})
+  let results = await collection.find(query)
     .limit(50)
     .toArray();
+
+
+  // let collection = await db.collection("songs");
+  // let results = await collection.find({})
+  //   .limit(50)
+  //   .toArray();
 
   res.send(results).status(200);
 });
@@ -18,7 +32,7 @@ router.get("/", async (req, res) => {
 router.get("/latest", async (req, res) => {
   let collection = await db.collection("songs");
   let results = await collection.aggregate([
-    {"$project": {"Artist": 1, "sheetName": 1, "Genres": 1, "date": 1}},
+    {"$project": {"Artist": 1, "sheetName": 1, "Genres": 1, "scale": 1, "date": 1}},
     {"$sort": {"date": -1}},
     {"$limit": 6}
   ]).toArray();
