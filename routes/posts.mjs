@@ -1,6 +1,7 @@
 import express from "express";
 import db from "../db/conn.mjs";
 import { ObjectId } from "mongodb";
+import "../loadEnvironment.mjs";
 
 const router = express.Router();
 
@@ -53,7 +54,7 @@ router.post("/", async (req, res) => {
   let collection = await db.collection("songs");
   let newDocument = req.body;
   newDocument.date = new Date();
-  let result = await collection.insertOne(newDocument);
+  //let result = await collection.insertOne(newDocument); //create functionality stopped for the time being
   res.send(newDocument).status(204);
 });
 
@@ -72,10 +73,14 @@ router.post("/", async (req, res) => {
 
 // Delete an entry
 router.delete("/:id", async (req, res) => {
-  const query = { _id: new ObjectId(req.params.id) };
-  const collection = db.collection("songs");
-  let result = await collection.deleteOne(query);
-  res.send(result).status(200);
+  if(req.body.pass == process.env.DELETE_KEY){
+    let collection = await db.collection("songs");
+    let query = {_id: new ObjectId(req.params.id)};
+    let result = await collection.deleteOne(query);
+    res.send(result).status(200);
+  } else {
+    res.status(401).send({});
+  }
 });
 
 export default router;

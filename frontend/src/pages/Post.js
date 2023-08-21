@@ -1,4 +1,4 @@
-import React, {useState, useEffect} from "react";
+import React, {useState, useEffect, useRef} from "react";
 import { useParams, useNavigate } from "react-router-dom";
 import { baseUrl } from "../config";
 import OpenSheetMusicDisplay from "../components/OpenSheetMusicDisplay";
@@ -9,44 +9,34 @@ export default function App() {
   let [showModal, setShowModal] = useState(false);
   let [author, setAuthor] = useState("");
   let [body, setBody] = useState("");
+  //let [password, setPassword] = useState("");
+  let passwordRef = useRef();
+
+
   const navigate = useNavigate();
 
-  const deletePost = async () => {
+  const deletePost = async () => {    
+    console.log(typeof(passwordRef.current.value));
     await fetch(window.location.protocol + `//${baseUrl}/posts/${params.id}`, {
-      method: "DELETE"
-    });
-    return navigate("/");
+      method: "DELETE",
+      body: {"pass": passwordRef.current.value} //IMPORTANT not working atm -- BUG
+    }).then(resp => { 
+      // stringify resp.body
+      console.log(JSON.stringify(resp.body));
+      if(resp.status !== 200) {
+        alert("wrong password");         
+      } 
+      else {
+        //return navigate("/");
+      }
+    });       
   }
 
-
-  // we no longer have comments
-  // const handleNewComment = async () => {     
-  //   await fetch(window.location.protocol + `//${baseUrl}/posts/comment/${params.id}`, {
-  //     method: "PATCH",
-  //     headers: {
-  //       "content-type": "application/json"
-  //     },
-  //     body: JSON.stringify({
-  //       author, body
-  //     })
-  //   }).then(resp => console.log(resp.json())  );
-
-  //   let result = await fetch(window.location.protocol + `//${baseUrl}/posts/${params.id}`).then(resp => resp.json());
-  //   //console.log(result);
-  //   setPost(result);
-
-  //   setAuthor("");
-  //   setBody("");
-  //   setShowModal(false);
-  // }
-
   useEffect(() => {
-    console.log(window.location.protocol + `//${baseUrl}/posts/${params.id}`);
     const loadPost = async () => {
       let results = await fetch(window.location.protocol + `//${baseUrl}/posts/${params.id}`).then(resp => resp.json());      
       setPost(results);
     }
-
     loadPost();
   }, [params.id]);
 
@@ -90,12 +80,20 @@ export default function App() {
       {/*<button variant="primary" onClick={() => setShowModal(true)}>Add Comment</button>&nbsp;&nbsp;*/}
       
 
-      <div className="container flex items-center mb-5" >              
+      <div className="container flex items-center mb-5" >  
+        <input className="text-sm py-1 px-3 me-2 mt-2 focus:border-rose-700 text-base text-gray-700 placeholder-gray-600 border rounded-lg focus:shadow-outline" 
+          type="password"
+          placeholder="Password"
+          ref={passwordRef}
+        />
         <button 
-          className="text-sm py-1 px-3 inline-block tracking-wide border align-middle transition duration-500 ease-in-out text-base text-center bg-rose-600 hover:bg-rose-700 border-rose-600 hover:border-rose-700 text-white rounded-md me-2 mt-2"
+          className="text-sm py-1 px-3 inline-block tracking-wide border align-middle 
+            transition duration-500 ease-in-out text-base text-center 
+            bg-rose-600 hover:bg-rose-700 border-rose-600 hover:border-rose-700 
+            text-white rounded-md me-2 mt-2"
           variant="danger" 
           onClick={deletePost}>
-            Delete Post
+            Delete sheet
         </button>  
         <a
           href={"/sheets/" + post.sheetName} 

@@ -31,8 +31,8 @@ export default function App() {
         "content-type": "application/json"
       },
       body: JSON.stringify({
-        author, title, tags: tags.split(","), body
-      })
+        author, title, tags: tags.split(","), body 
+      }) //need work on this
     }).then(resp => console.log(resp.json()));
     setAuthor("");
     setTitle("");

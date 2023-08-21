@@ -178,8 +178,9 @@ export default function Navigation ({ className }) {
                       
               
                       <li className="inline ps-1 mb-0">
+                          {/*disabled the create btn for the time being*/}
                           <Link href="#" to="/create" 
-                          className="px-4 h-9 w-auto inline-flex items-center justify-center tracking-wide align-middle transition duration-500 ease-in-out text-base text-center rounded-full bg-rose-600 hover:bg-rose-700 border border-rose-600 hover:border-rose-700 text-white"
+                          className="pointer-events-none cursor-not-allowed px-4 h-9 w-auto inline-flex items-center justify-center tracking-wide align-middle transition duration-500 ease-in-out text-base text-center rounded-full bg-rose-600 hover:bg-rose-700 border border-rose-600 hover:border-rose-700 text-white"
                           >
                             Contribute <i className="uil uil-edit text-lg ml-2"></i>
                           </Link>
@@ -197,100 +198,105 @@ export default function Navigation ({ className }) {
                           </li>
                   
                           <li className="has-submenu parent-parent-menu-item">
-                              <Link href="#" aria-label="Archive" to="/archive">Ragas</Link><span className="menu-arrow"></span>
+                              <a href="#">Ragas</a><span className="menu-arrow"></span>
 
                               <ul className="submenu megamenu">
                                   <li>
                                       <ul>
-                                          <li><a href="search?scaleName=abhogi" className="sub-menu-item">Abhogi</a></li>
-                                          <li><a href="search?scaleName=adana" className="sub-menu-item">Adana (raga) </a></li>
-                                          <li><a href="search?scaleName=amritvarshini" className="sub-menu-item">Amritvarshini (raga) </a></li>
-                                          <li><a href="search?scaleName=asa" className="sub-menu-item">Asa (raga)</a></li>
-                                          <li><a href="search?scaleName=asavari" className="sub-menu-item">Asavari </a></li>
-                                          <li><a href="search?scaleName=bageshri" className="sub-menu-item">Bageshri</a></li>
-                                          <li><a href="search?scaleName=bahar" className="sub-menu-item">Bahar (raga)</a></li>
-                                          <li><a href="search?scaleName=bairagi" className="sub-menu-item">Bairagi (raga)</a></li>
-                                          <li><a href="search?scaleName=bairari" className="sub-menu-item">Bairari </a></li>
-                                          <li><a href="search?scaleName=barwa" className="sub-menu-item">Barwa (raga) </a></li>
-                                          <li><a href="search?scaleName=basant" className="sub-menu-item">Basant (raga)</a></li>
-                                          <li><a href="search?scaleName=ahir-bhairav" className="sub-menu-item">Ahir Bhairav </a></li>
-                                          <li><a href="search?scaleName=bhairav" className="sub-menu-item">Bhairav (raga) </a></li>
-                                          <li><a href="search?scaleName=sindhu-bhairavi" className="sub-menu-item">Sindhu Bhairavi (raga) </a></li>
-                                          <li><a href="search?scaleName=bhairavi" className="sub-menu-item">Bhairavi (Hindustani)</a></li>
+                                          <li><Link to="search?scaleName=abhogi" className="sub-menu-item">Abhogi</Link></li>
+                                          <li><Link to="search?scaleName=adana" className="sub-menu-item">Adana (raga) </Link></li>
+                                          <li><Link to="search?scaleName=amritvarshini" className="sub-menu-item">Amritvarshini (raga) </Link></li>
+                                          <li><Link to="search?scaleName=asa" className="sub-menu-item">Asa (raga)</Link></li>
+                                          <li><Link to="search?scaleName=asavari" className="sub-menu-item">Asavari </Link></li>
+                                          <li><Link to="search?scaleName=bageshri" className="sub-menu-item">Bageshri</Link></li>
+                                          <li><Link to="search?scaleName=bahar" className="sub-menu-item">Bahar (raga)</Link></li>
+                                          <li><Link to="search?scaleName=bairagi" className="sub-menu-item">Bairagi (raga)</Link></li>
+                                          <li><Link to="search?scaleName=bairari" className="sub-menu-item">Bairari </Link></li>
+                                          <li><Link to="search?scaleName=barwa" className="sub-menu-item">Barwa (raga) </Link></li>
+                                          <li><Link to="search?scaleName=basant" className="sub-menu-item">Basant (raga)</Link></li>
+                                          <li><Link to="search?scaleName=ahir-bhairav" className="sub-menu-item">Ahir Bhairav </Link></li>
+                                          <li><Link to="search?scaleName=bhairav" className="sub-menu-item">Bhairav (raga) </Link></li>
+                                          <li><Link to="search?scaleName=sindhu-bhairavi" className="sub-menu-item">Sindhu Bhairavi (raga) </Link></li>
+                                          <li><Link to="search?scaleName=bhairavi" className="sub-menu-item">Bhairavi (Hindustani)</Link></li>
                                       </ul>
                                   </li>
 
                                   <li>
                                       <ul>
-                                          <li><a href="search?scaleName=Bhatiyar" className="sub-menu-item">Bhatiyar</a></li>
-                                          <li><a href="search?scaleName=Bhimpalasi" className="sub-menu-item">Bhimpalasi</a></li>
-                                          <li><a href="search?scaleName=Bhimsen" className="sub-menu-item">Bhimsen (raga)</a></li>
-                                          <li><a href="search?scaleName=Bhinna%20Shadja" className="sub-menu-item">Bhinna Shadja</a></li>
-                                          <li><a href="search?scaleName=Bhoopali" className="sub-menu-item">Bhoopali </a></li>
-                                          <li><a href="search?scaleName=Bhoopeshwari" className="sub-menu-item">Bhoopeshwari</a></li>
-                                          <li><a href="search?scaleName=Bibhas" className="sub-menu-item">Bibhas</a></li>
-                                          <li><a href="search?scaleName=Bihag" className="sub-menu-item">Bihag</a></li>
-                                          <li><a href="search?scaleName=Hem%20Bihag" className="sub-menu-item">Hem Bihag</a></li>
-                                          <li><a href="search?scaleName=Bihagara" className="sub-menu-item">Bihagara</a></li>
-                                          <li><a href="search?scaleName=Bilaval" className="sub-menu-item">Bilaval</a></li>
-                                          <li><a href="search?scaleName=Alhaiya%20Bilaval" className="sub-menu-item">Alhaiya Bilaval</a></li>
-                                          <li><a href="search?scaleName=Brindavani%20Sarang" className="sub-menu-item">Brindavani Sarang</a></li>
-                                          <li><a href="search?scaleName=Chandrakauns" className="sub-menu-item">Chandrakauns</a></li>
-                                          <li><a href="search?scaleName=Chhayanat" className="sub-menu-item">Chhayanat (raga)</a></li>
+                                          <li><Link to="search?scaleName=Bhatiyar" className="sub-menu-item">Bhatiyar</Link></li>
+                                          <li><Link to="search?scaleName=Bhimpalasi" className="sub-menu-item">Bhimpalasi</Link></li>
+                                          <li><Link to="search?scaleName=Bhimsen" className="sub-menu-item">Bhimsen (raga)</Link></li>
+                                          <li><Link to="search?scaleName=Bhinna%20Shadja" className="sub-menu-item">Bhinna Shadja</Link></li>
+                                          <li><Link to="search?scaleName=Bhoopali" className="sub-menu-item">Bhoopali </Link></li>
+                                          <li><Link to="search?scaleName=Bhoopeshwari" className="sub-menu-item">Bhoopeshwari</Link></li>
+                                          <li><Link to="search?scaleName=Bibhas" className="sub-menu-item">Bibhas</Link></li>
+                                          <li><Link to="search?scaleName=Bihag" className="sub-menu-item">Bihag</Link></li>
+                                          <li><Link to="search?scaleName=Hem%20Bihag" className="sub-menu-item">Hem Bihag</Link></li>
+                                          <li><Link to="search?scaleName=Bihagara" className="sub-menu-item">Bihagara</Link></li>
+                                          <li><Link to="search?scaleName=Bilaval" className="sub-menu-item">Bilaval</Link></li>
+                                          <li><Link to="search?scaleName=Alhaiya%20Bilaval" className="sub-menu-item">Alhaiya Bilaval</Link></li>
+                                          <li><Link to="search?scaleName=Brindavani%20Sarang" className="sub-menu-item">Brindavani Sarang</Link></li>
+                                          <li><Link to="search?scaleName=Chandrakauns" className="sub-menu-item">Chandrakauns</Link></li>
+                                          <li><Link to="search?scaleName=Chhayanat" className="sub-menu-item">Chhayanat (raga)</Link></li>
                                       </ul>
                                   </li>  
 
                                   <li>
                                       <ul>
-                                          <li><a href="search?scaleName=Darbar" className="sub-menu-item">Darbar (raga)</a></li>
-                                          <li><a href="search?scaleName=Desh" className="sub-menu-item">Desh (raga)</a></li>
-                                          <li><a href="search?scaleName=Desi" className="sub-menu-item">Desi (raga)</a></li>
-                                          <li><a href="search?scaleName=Dhanashree" className="sub-menu-item">Dhanashree</a></li>
-                                          <li><a href="search?scaleName=Dhani" className="sub-menu-item">Dhani (raga) </a></li>
-                                          <li><a href="search?scaleName=Puriya%20Dhanashree" className="sub-menu-item">Puriya Dhanashree</a></li>
-                                          <li><a href="search?scaleName=Durga" className="sub-menu-item">Durga (raga)</a></li>
-                                          <li><a href="search?scaleName=Gond" className="sub-menu-item">Gond (raga)</a></li>
-                                          <li><a href="search?scaleName=Gaud%20Malhar" className="sub-menu-item">Gaud Malhar </a></li>
-                                          <li><a href="search?scaleName=Gaud%20Sarang" className="sub-menu-item">Gaud Sarang</a></li>
-                                          <li><a href="search?scaleName=Gauri" className="sub-menu-item">Gauri (raga)</a></li>
-                                          <li><a href="search?scaleName=Gorakh%20Kalyan" className="sub-menu-item">Gorakh Kalyan</a></li>
-                                          <li><a href="search?scaleName=Gujjari" className="sub-menu-item">Gujjari</a></li>
-                                          <li><a href="search?scaleName=Gunakri" className="sub-menu-item">Gunakri</a></li>
-                                          <li><a href="search?scaleName=Gurjari" className="sub-menu-item">Gurjari (raga)</a></li>
+                                          <li><Link to="search?scaleName=Darbar" className="sub-menu-item">Darbar (raga)</Link></li>
+                                          <li><Link to="search?scaleName=Desh" className="sub-menu-item">Desh (raga)</Link></li>
+                                          <li><Link to="search?scaleName=Desi" className="sub-menu-item">Desi (raga)</Link></li>
+                                          <li><Link to="search?scaleName=Dhanashree" className="sub-menu-item">Dhanashree</Link></li>
+                                          <li><Link to="search?scaleName=Dhani" className="sub-menu-item">Dhani (raga) </Link></li>
+                                          <li><Link to="search?scaleName=Puriya%20Dhanashree" className="sub-menu-item">Puriya Dhanashree</Link></li>
+                                          <li><Link to="search?scaleName=Durga" className="sub-menu-item">Durga (raga)</Link></li>
+                                          <li><Link to="search?scaleName=Gond" className="sub-menu-item">Gond (raga)</Link></li>
+                                          <li><Link to="search?scaleName=Gaud%20Malhar" className="sub-menu-item">Gaud Malhar </Link></li>
+                                          <li><Link to="search?scaleName=Gaud%20Sarang" className="sub-menu-item">Gaud Sarang</Link></li>
+                                          <li><Link to="search?scaleName=Gauri" className="sub-menu-item">Gauri (raga)</Link></li>
+                                          <li><Link to="search?scaleName=Gorakh%20Kalyan" className="sub-menu-item">Gorakh Kalyan</Link></li>
+                                          <li><Link to="search?scaleName=Gujjari" className="sub-menu-item">Gujjari</Link></li>
+                                          <li><Link to="search?scaleName=Gunakri" className="sub-menu-item">Gunakri</Link></li>
+                                          <li><Link to="search?scaleName=Gurjari" className="sub-menu-item">Gurjari (raga)</Link></li>
                                       </ul>
                                   </li>
 
                                   <li>
                                       <ul>
-                                          <li><a href="search?scaleName=Hameer" className="sub-menu-item">Hameer</a></li>
-                                          <li><a href="search?scaleName=Hindol" className="sub-menu-item">Hindol</a></li>
-                                          <li><a href="search?scaleName=Jaijaivanti" className="sub-menu-item">Jaijaivanti</a></li>
-                                          <li><a href="search?scaleName=Jaitsri" className="sub-menu-item">Jaitsri</a></li>
-                                          <li><a href="search?scaleName=Jaunpuri" className="sub-menu-item">Jaunpuri (raga)</a></li>
-                                          <li><a href="search?scaleName=Jhinjhoti" className="sub-menu-item">Jhinjhoti</a></li>
-                                          <li><a href="search?scaleName=Jog" className="sub-menu-item">Jog (raga)</a></li>
-                                          <li><a href="search?scaleName=Jogiya" className="sub-menu-item">Jogiya (raga)</a></li>
-                                          <li><a href="search?scaleName=Chhayanat" className="sub-menu-item">XXXX </a></li>
-                                          <li><a href="search?scaleName=Chhayanat" className="sub-menu-item">XXX (raga) </a></li>
-                                          <li><a href="search?scaleName=Chhayanat" className="sub-menu-item">XXX (raga)</a></li>
-                                          <li><a href="search?scaleName=Chhayanat" className="sub-menu-item">XXX Bhairav </a></li>
+                                          <li><Link to="search?scaleName=Hameer" className="sub-menu-item">Hameer</Link></li>
+                                          <li><Link to="search?scaleName=Hindol" className="sub-menu-item">Hindol</Link></li>
+                                          <li><Link to="search?scaleName=Jaijaivanti" className="sub-menu-item">Jaijaivanti</Link></li>
+                                          <li><Link to="search?scaleName=Jaitsri" className="sub-menu-item">Jaitsri</Link></li>
+                                          <li><Link to="search?scaleName=Jaunpuri" className="sub-menu-item">Jaunpuri (raga)</Link></li>
+                                          <li><Link to="search?scaleName=Jhinjhoti" className="sub-menu-item">Jhinjhoti</Link></li>
+                                          <li><Link to="search?scaleName=Jog" className="sub-menu-item">Jog (raga)</Link></li>
+                                          <li><Link to="search?scaleName=Jogiya" className="sub-menu-item">Jogiya (raga)</Link></li>
+                                          <li><Link to="search?scaleName=Kafi" className="sub-menu-item">Kafi (raga)</Link></li>
+                                          <li><Link to="search?scaleName=Kalavati" className="sub-menu-item">Kalavati</Link></li>
+                                          <li><Link to="search?scaleName=Kanada" className="sub-menu-item">Kanada (family of ragas)</Link></li>
+                                          <li><Link to="search?scaleName=Darbari%20Kanada" className="sub-menu-item">Darbari Kanada</Link></li>
+                                          <li><Link to="search?scaleName=Kedar" className="sub-menu-item">Kedar (raga)</Link></li>
+                                          <li><Link to="search?scaleName=Khamaj" className="sub-menu-item">Khamaj</Link></li>
+                                          <li><Link to="search?scaleName=Kirwani" className="sub-menu-item">Kirwani</Link></li>
                                       </ul>
                                   </li>
 
                                   <li>
                                       <ul>
-                                          <li><a href="search?scaleName=Chhayanat" className="sub-menu-item">XXX</a></li>
-                                          <li><a href="search?scaleName=Chhayanat" className="sub-menu-item">XXX (raga) </a></li>
-                                          <li><a href="search?scaleName=Chhayanat" className="sub-menu-item">XXXX (raga) </a></li>
-                                          <li><a href="search?scaleName=Chhayanat" className="sub-menu-item">XXXX (raga)</a></li>
-                                          <li><a href="search?scaleName=Chhayanat" className="sub-menu-item">XXXX </a></li>
-                                          <li><a href="#" className="sub-menu-item">Bageshri</a></li>
-                                          <li><a href="search?scaleName=Chhayanat" className="sub-menu-item">XXX (raga)</a></li>
-                                          <li><a href="search?scaleName=Chhayanat" className="sub-menu-item">BairXXagi (raga)</a></li>
-                                          <li><a href="search?scaleName=Chhayanat" className="sub-menu-item">Bairari </a></li>
-                                          <li><a href="search?scaleName=Chhayanat" className="sub-menu-item">Barwa (raga) </a></li>
-                                          <li><a href="search?scaleName=Chhayanat" className="sub-menu-item">Basant (raga)</a></li>
-                                          <li><a href="search?scaleName=Chhayanat" className="sub-menu-item">Ahir Bhairav </a></li>
+                                          <li><Link to="search?scaleName=Lalit" className="sub-menu-item">Lalit (raga)</Link></li>
+                                          <li><Link to="search?scaleName=Malhar " className="sub-menu-item">Malhar</Link></li>
+                                          <li><Link to="search?scaleName=Malkauns" className="sub-menu-item">Malkauns</Link></li>
+                                          <li><Link to="search?scaleName=Mangala%20Gujjari" className="sub-menu-item">Mangala Gujjari</Link></li>
+                                          <li><Link to="search?scaleName=Multani" className="sub-menu-item">Multani (raga)</Link></li>
+                                          <li><Link to="search?scaleName=Nat%20Bhairav" className="sub-menu-item">Nat Bhairav</Link></li>
+                                          <li><Link to="search?scaleName=Patdeep" className="sub-menu-item">Patdeep</Link></li>
+                                          <li><Link to="search?scaleName=Purvi" className="sub-menu-item">Purvi</Link></li>
+                                          <li><Link to="search?scaleName=Ramkali" className="sub-menu-item">Ramkali</Link></li>
+                                          <li><Link to="search?scaleName=Shivaranjani" className="sub-menu-item">Shivaranjani</Link></li>
+                                          <li><Link to="search?scaleName=Sohni" className="sub-menu-item">Sohni</Link></li>
+                                          <li><Link to="search?scaleName=Bilaskhani%20Todi" className="sub-menu-item">Bilaskhani Todi</Link></li>
+                                          <li><Link to="search?scaleName=Yaman" className="sub-menu-item">Yaman (raga)</Link></li>
+                                          <li><Link to="search?scaleName=Zeelaf" className="sub-menu-item">Zeelaf</Link></li>
                                       </ul>
                                   </li>
 

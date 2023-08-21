@@ -48,7 +48,7 @@ export default function App() {
           <div className="grid md:grid-cols-12 grid-cols-1 mt-8 pb-8">
               <div className="md:col-span-12 text-center">
                   <a 
-                    href="/archive" 
+                    href="/search" 
                     className="relative inline-block font-semibold tracking-wide align-middle 
                                text-base text-center border-none after:content-[''] after:absolute
                                after:h-px after:w-0 hover:after:w-full after:end-0 hover:after:end-auto
