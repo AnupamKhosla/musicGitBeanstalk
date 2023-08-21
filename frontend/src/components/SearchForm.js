@@ -10,16 +10,22 @@ import { useNavigate } from "react-router-dom";
 export default function SearchForm(props) {
 
 
+	//get url get variables
+	let url = new URL(window.location.href);
+	let songName = url.searchParams.get("songName");
+	let artistName = url.searchParams.get("artistName");
+	let scaleName = url.searchParams.get("scaleName");
+
 	let formRef = useRef(null); //reference to the form element
 	//on submit go to archive page with form input values as get variables
 	let navigate = useNavigate(); //useNavigate is a hook that allows us to navigate to a different page
 	const handleSubmit = async (e) => {
 		e.preventDefault();
-		let songName = formRef.current.songName.value;
-		let artistName = formRef.current.artistName.value;
-		let scaleName = formRef.current.scaleName.value;
+		songName = formRef.current.songName.value;
+		artistName = formRef.current.artistName.value;
+		scaleName = formRef.current.scaleName.value;
 
-		let url = `/search?songName=${songName}&artistName=${artistName}&scaleName=${scaleName}`;
+		url = `/search?songName=${songName}&artistName=${artistName}&scaleName=${scaleName}`;
 		navigate(url);
 		if (props.searchSubmitCallback) props.searchSubmitCallback(e);
 	}
@@ -58,7 +64,9 @@ export default function SearchForm(props) {
 	                                      id="songName"
 	                                      type="text"
 	                                      className="pl-10 form-input lg:rounded-t-sm lg:rounded-e-none lg:rounded-b-none lg:rounded-s-sm lg:outline-0 w-full filter-input-box bg-gray-100 dark:bg-slate-800 border-0 focus:ring-0"
-	                                      placeholder="E.g. Sonata" />
+	                                      placeholder="E.g. Sonata"
+	                                      defaultValue={songName} 
+	                                    />
 	                                </div>
 	                                <div className="ml-2 filter-search-form relative ">
 	                                    <label htmlFor="artistName" className="font-semibold text-sm mb-2">Artist name</label>
@@ -67,7 +75,9 @@ export default function SearchForm(props) {
 	                                      id="artistName"
 	                                      type="text"
 	                                      className="form-input lg:rounded-t-sm lg:rounded-e-none lg:rounded-b-none lg:rounded-s-sm lg:outline-0 w-full filter-input-box bg-gray-100 dark:bg-slate-800 border-0 focus:ring-0"
-	                                      placeholder="E.g. Mozart" />
+	                                      placeholder="E.g. Mozart" 
+	                                      defaultValue={artistName}
+	                                    />
 	                                </div>
 	                                <div className="ml-2 filter-search-form relative ">
 	                                    <label htmlFor="scaleName" className="font-semibold text-sm mb-2">Scale/Raga</label>
@@ -76,7 +86,9 @@ export default function SearchForm(props) {
 	                                      id="scaleName"
 	                                      type="text"
 	                                      className="form-input lg:rounded-t-sm lg:rounded-e-none lg:rounded-b-none lg:rounded-s-sm lg:outline-0 w-full filter-input-box bg-gray-100 dark:bg-slate-800 border-0 focus:ring-0"
-	                                      placeholder="E.g. Major" />
+	                                      placeholder="E.g. Major" 
+	                                      defaultValue={scaleName}
+	                                    />
 	                                </div>
 	                                <div className="lg:mt-6 flex items-end">
 	                                    <input 

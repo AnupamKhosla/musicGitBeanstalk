@@ -13,7 +13,7 @@ const container = document.getElementById('root');
 const root = createRoot(container!); // createRoot(container!) if you use TypeScript
 root.render(
   <React.StrictMode>
-    <div className="app-container bg-slate-100">
+    <div className="app-container bg-slate-100 min-h-screen">
       <App />
     </div>
   </React.StrictMode>

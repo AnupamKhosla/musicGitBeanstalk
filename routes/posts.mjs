@@ -10,7 +10,7 @@ router.get("/", async (req, res) => {
   let query = {};
   if (req.query.songName) query.sheetName = {$regex: req.query.songName, $options: "i"};
   if (req.query.artistName) query.Artist = {$regex: req.query.artistName, $options: "i"};
-  if (req.query.scaleName) query.scaleName = {$regex: req.query.scaleName, $options: "i"};
+  if (req.query.scaleName) query.scale = {$regex: req.query.scaleName, $options: "i"};
   if (req.query.genre) query.Genres = {$regex: req.query.genre, $options: "i"};
   if (req.query.date) query.date = {$regex: req.query.date, $options: "i"};
 

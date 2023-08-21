@@ -1,6 +1,7 @@
 // import { SideNav, SideNavItem } from '@leafygreen-ui/side-nav';
 import { Link, useLocation } from "react-router-dom";
-import { useEffect } from "react";
+import { useEffect, useRef, useState } from "react";
+
 
 //menu is static atm so using plain js
 //helper funcs
@@ -100,6 +101,11 @@ function activateMenu() {
 export default function Navigation ({ className }) {
   const location = useLocation();
 
+  let [songName, setSongName] = useState("");
+  let searchFormRef = useRef(null);
+
+
+
   //useeffect hook to run once
   useEffect(() => {
     activateMenu();        
@@ -150,15 +156,24 @@ export default function Navigation ({ className }) {
                   <ul className="buy-button list-none mb-0">
                       <li className="inline-block mb-0">
                           <div className="form-icon relative">
-                              <i className="uil uil-search text-lg absolute top-1/2 -translate-y-1/2 start-3"></i>
+                              <Link to={`/search?songName=${songName}`}
+                                type="submit" 
+                                ref={searchFormRef} 
+                                className=" absolute top-1/2 -translate-y-1/2 start-3"
+                              >
+                                <i className="uil uil-search text-lg text-rose-600"></i>
+                              </Link>
+                              
                               <input 
                                 type="text"
                                 className="form-input sm:w-44 w-28 ps-10 py-2 px-3 h-10 bg-transparent dark:bg-slate-900 dark:text-slate-200 rounded-3xl outline-none border border-gray-200 focus:border-rose-600 dark:border-gray-800 dark:focus:border-rose-600 focus:ring-0 bg-white"
                                 name="searchTop"
                                 id="searchTop"
                                 placeholder="Search sheet" 
+                                onChange={(e) => {setSongName(e.target.value)}}
+                                onKeyUp={(e) => {if (e.key === 'Enter') {searchFormRef.current.click()} }}
                               />
-                          </div>
+                          </div>                         
                       </li>
                       
               
@@ -172,7 +187,7 @@ export default function Navigation ({ className }) {
                   </ul>
                   {/*Login button End*/}
 
-                  <div id="navigation">
+                  <div id="navigation" className="z-1">
                       {/*Navigation Menu*/}
                       <ul className="navigation-menu justify-end">
                           <li>
@@ -187,92 +202,95 @@ export default function Navigation ({ className }) {
                               <ul className="submenu megamenu">
                                   <li>
                                       <ul>
-                                          <li><a href="ragas/abhogi" className="sub-menu-item">Abhogi <span className="bg-emerald-600 inline-block text-white text-[10px] font-bold px-2.5 py-0.5 rounded h-5 ms-1">Animation</span></a></li>
-                                          <li><a href="ragas/adana" className="sub-menu-item">Adana (raga) </a></li>
-                                          <li><a href="ragas/amritvarshini" className="sub-menu-item">Amritvarshini (raga) </a></li>
-                                          <li><a href="ragas/asa" className="sub-menu-item">Asa (raga)</a></li>
-                                          <li><a href="ragas/asavari" className="sub-menu-item">Asavari </a></li>
-                                          <li><a href="ragas/bageshri" className="sub-menu-item">Bageshri <span className="bg-red-600 inline-block text-white text-[10px] font-bold px-2.5 py-0.5 rounded h-5 ms-1">Comingsoon</span></a></li>
-                                          <li><a href="ragas/bahar" className="sub-menu-item">Bahar (raga)</a></li>
-                                          <li><a href="ragas/bairagi" className="sub-menu-item">Bairagi (raga)</a></li>
-                                          <li><a href="ragas/bairari" className="sub-menu-item">Bairari </a></li>
-                                          <li><a href="ragas/barwa" className="sub-menu-item">Barwa (raga) </a></li>
-                                          <li><a href="ragas/basant" className="sub-menu-item">Basant (raga)</a></li>
-                                          <li><a href="ragas/ahir-bhairav" className="sub-menu-item">Ahir Bhairav </a></li>
-                                          <li><a href="ragas/bhairav" className="sub-menu-item">Bhairav (raga) </a></li>
-                                          <li><a href="ragas/sindhu-bhairavi" className="sub-menu-item">Sindhu Bhairavi (raga) </a></li>
-                                          <li><a href="ragas/bhairavi" className="sub-menu-item">Bhairavi (Hindustani)</a></li>
+                                          <li><a href="search?scaleName=abhogi" className="sub-menu-item">Abhogi</a></li>
+                                          <li><a href="search?scaleName=adana" className="sub-menu-item">Adana (raga) </a></li>
+                                          <li><a href="search?scaleName=amritvarshini" className="sub-menu-item">Amritvarshini (raga) </a></li>
+                                          <li><a href="search?scaleName=asa" className="sub-menu-item">Asa (raga)</a></li>
+                                          <li><a href="search?scaleName=asavari" className="sub-menu-item">Asavari </a></li>
+                                          <li><a href="search?scaleName=bageshri" className="sub-menu-item">Bageshri</a></li>
+                                          <li><a href="search?scaleName=bahar" className="sub-menu-item">Bahar (raga)</a></li>
+                                          <li><a href="search?scaleName=bairagi" className="sub-menu-item">Bairagi (raga)</a></li>
+                                          <li><a href="search?scaleName=bairari" className="sub-menu-item">Bairari </a></li>
+                                          <li><a href="search?scaleName=barwa" className="sub-menu-item">Barwa (raga) </a></li>
+                                          <li><a href="search?scaleName=basant" className="sub-menu-item">Basant (raga)</a></li>
+                                          <li><a href="search?scaleName=ahir-bhairav" className="sub-menu-item">Ahir Bhairav </a></li>
+                                          <li><a href="search?scaleName=bhairav" className="sub-menu-item">Bhairav (raga) </a></li>
+                                          <li><a href="search?scaleName=sindhu-bhairavi" className="sub-menu-item">Sindhu Bhairavi (raga) </a></li>
+                                          <li><a href="search?scaleName=bhairavi" className="sub-menu-item">Bhairavi (Hindustani)</a></li>
                                       </ul>
                                   </li>
 
                                   <li>
                                       <ul>
-                                          <li><a href="ragas/abhogi" className="sub-menu-item">Abhogi <span className="bg-emerald-600 inline-block text-white text-[10px] font-bold px-2.5 py-0.5 rounded h-5 ms-1">Animation</span></a></li>
-                                          <li><a href="ragas/adana" className="sub-menu-item">Adana (raga) </a></li>
-                                          <li><a href="ragas/amritvarshini" className="sub-menu-item">Amritvarshini (raga) </a></li>
-                                          <li><a href="ragas/asa" className="sub-menu-item">Asa (raga)</a></li>
-                                          <li><a href="ragas/asavari" className="sub-menu-item">Asavari </a></li>
-                                          <li><a href="ragas/bageshri" className="sub-menu-item">Bageshri <span className="bg-red-600 inline-block text-white text-[10px] font-bold px-2.5 py-0.5 rounded h-5 ms-1">Comingsoon</span></a></li>
-                                          <li><a href="ragas/bahar" className="sub-menu-item">Bahar (raga)</a></li>
-                                          <li><a href="ragas/bairagi" className="sub-menu-item">Bairagi (raga)</a></li>
-                                          <li><a href="ragas/bairari" className="sub-menu-item">Bairari </a></li>
-                                          <li><a href="ragas/barwa" className="sub-menu-item">Barwa (raga) </a></li>
-                                          <li><a href="ragas/basant" className="sub-menu-item">Basant (raga)</a></li>
-                                          <li><a href="ragas/ahir-bhairav" className="sub-menu-item">Ahir Bhairav </a></li>
-                                          <li><a href="ragas/bhairav" className="sub-menu-item">Bhairav (raga) </a></li>
-                                          <li><a href="ragas/sindhu-bhairavi" className="sub-menu-item">Sindhu Bhairavi (raga) </a></li>
-                                          <li><a href="ragas/bhairavi" className="sub-menu-item">Bhairavi (Hindustani)</a></li>
+                                          <li><a href="search?scaleName=Bhatiyar" className="sub-menu-item">Bhatiyar</a></li>
+                                          <li><a href="search?scaleName=Bhimpalasi" className="sub-menu-item">Bhimpalasi</a></li>
+                                          <li><a href="search?scaleName=Bhimsen" className="sub-menu-item">Bhimsen (raga)</a></li>
+                                          <li><a href="search?scaleName=Bhinna%20Shadja" className="sub-menu-item">Bhinna Shadja</a></li>
+                                          <li><a href="search?scaleName=Bhoopali" className="sub-menu-item">Bhoopali </a></li>
+                                          <li><a href="search?scaleName=Bhoopeshwari" className="sub-menu-item">Bhoopeshwari</a></li>
+                                          <li><a href="search?scaleName=Bibhas" className="sub-menu-item">Bibhas</a></li>
+                                          <li><a href="search?scaleName=Bihag" className="sub-menu-item">Bihag</a></li>
+                                          <li><a href="search?scaleName=Hem%20Bihag" className="sub-menu-item">Hem Bihag</a></li>
+                                          <li><a href="search?scaleName=Bihagara" className="sub-menu-item">Bihagara</a></li>
+                                          <li><a href="search?scaleName=Bilaval" className="sub-menu-item">Bilaval</a></li>
+                                          <li><a href="search?scaleName=Alhaiya%20Bilaval" className="sub-menu-item">Alhaiya Bilaval</a></li>
+                                          <li><a href="search?scaleName=Brindavani%20Sarang" className="sub-menu-item">Brindavani Sarang</a></li>
+                                          <li><a href="search?scaleName=Chandrakauns" className="sub-menu-item">Chandrakauns</a></li>
+                                          <li><a href="search?scaleName=Chhayanat" className="sub-menu-item">Chhayanat (raga)</a></li>
                                       </ul>
                                   </li>  
 
                                   <li>
                                       <ul>
-                                          <li><a href="index-saas.html" className="sub-menu-item">Abhogi <span className="bg-emerald-600 inline-block text-white text-[10px] font-bold px-2.5 py-0.5 rounded h-5 ms-1">Animation</span></a></li>
-                                          <li><a href="index-classNameic-saas.html" className="sub-menu-item">Adana (raga) </a></li>
-                                          <li><a href="index-modern-saas.html" className="sub-menu-item">Amritvarshini (raga) </a></li>
-                                          <li><a href="index-apps.html" className="sub-menu-item">Asa (raga)</a></li>
-                                          <li><a href="index-classNameic-app.html" className="sub-menu-item">Asavari </a></li>
-                                          <li><a href="#" className="sub-menu-item">Bageshri <span className="bg-red-600 inline-block text-white text-[10px] font-bold px-2.5 py-0.5 rounded h-5 ms-1">Comingsoon</span></a></li>
-                                          <li><a href="index-smartwatch.html" className="sub-menu-item">Bahar (raga)</a></li>
-                                          <li><a href="index-marketing.html" className="sub-menu-item">Bairagi (raga)</a></li>
-                                          <li><a href="index-seo.html" className="sub-menu-item">Bairari </a></li>
-                                          <li><a href="index-software.html" className="sub-menu-item">Barwa (raga) </a></li>
-                                          <li><a href="index-payment.html" className="sub-menu-item">Basant (raga)</a></li>
-                                          <li><a href="index-charity.html" className="sub-menu-item">Ahir Bhairav </a></li>
+                                          <li><a href="search?scaleName=Darbar" className="sub-menu-item">Darbar (raga)</a></li>
+                                          <li><a href="search?scaleName=Desh" className="sub-menu-item">Desh (raga)</a></li>
+                                          <li><a href="search?scaleName=Desi" className="sub-menu-item">Desi (raga)</a></li>
+                                          <li><a href="search?scaleName=Dhanashree" className="sub-menu-item">Dhanashree</a></li>
+                                          <li><a href="search?scaleName=Dhani" className="sub-menu-item">Dhani (raga) </a></li>
+                                          <li><a href="search?scaleName=Puriya%20Dhanashree" className="sub-menu-item">Puriya Dhanashree</a></li>
+                                          <li><a href="search?scaleName=Durga" className="sub-menu-item">Durga (raga)</a></li>
+                                          <li><a href="search?scaleName=Gond" className="sub-menu-item">Gond (raga)</a></li>
+                                          <li><a href="search?scaleName=Gaud%20Malhar" className="sub-menu-item">Gaud Malhar </a></li>
+                                          <li><a href="search?scaleName=Gaud%20Sarang" className="sub-menu-item">Gaud Sarang</a></li>
+                                          <li><a href="search?scaleName=Gauri" className="sub-menu-item">Gauri (raga)</a></li>
+                                          <li><a href="search?scaleName=Gorakh%20Kalyan" className="sub-menu-item">Gorakh Kalyan</a></li>
+                                          <li><a href="search?scaleName=Gujjari" className="sub-menu-item">Gujjari</a></li>
+                                          <li><a href="search?scaleName=Gunakri" className="sub-menu-item">Gunakri</a></li>
+                                          <li><a href="search?scaleName=Gurjari" className="sub-menu-item">Gurjari (raga)</a></li>
                                       </ul>
                                   </li>
 
                                   <li>
                                       <ul>
-                                          <li><a href="index-saas.html" className="sub-menu-item">Abhogi <span className="bg-emerald-600 inline-block text-white text-[10px] font-bold px-2.5 py-0.5 rounded h-5 ms-1">Animation</span></a></li>
-                                          <li><a href="index-classNameic-saas.html" className="sub-menu-item">Adana (raga) </a></li>
-                                          <li><a href="index-modern-saas.html" className="sub-menu-item">Amritvarshini (raga) </a></li>
-                                          <li><a href="index-apps.html" className="sub-menu-item">Asa (raga)</a></li>
-                                          <li><a href="index-classNameic-app.html" className="sub-menu-item">Asavari </a></li>
-                                          <li><a href="#" className="sub-menu-item">Bageshri <span className="bg-red-600 inline-block text-white text-[10px] font-bold px-2.5 py-0.5 rounded h-5 ms-1">Comingsoon</span></a></li>
-                                          <li><a href="index-smartwatch.html" className="sub-menu-item">Bahar (raga)</a></li>
-                                          <li><a href="index-marketing.html" className="sub-menu-item">Bairagi (raga)</a></li>
-                                          <li><a href="index-seo.html" className="sub-menu-item">Bairari </a></li>
-                                          <li><a href="index-software.html" className="sub-menu-item">Barwa (raga) </a></li>
-                                          <li><a href="index-payment.html" className="sub-menu-item">Basant (raga)</a></li>
-                                          <li><a href="index-charity.html" className="sub-menu-item">Ahir Bhairav </a></li>
+                                          <li><a href="search?scaleName=Hameer" className="sub-menu-item">Hameer</a></li>
+                                          <li><a href="search?scaleName=Hindol" className="sub-menu-item">Hindol</a></li>
+                                          <li><a href="search?scaleName=Jaijaivanti" className="sub-menu-item">Jaijaivanti</a></li>
+                                          <li><a href="search?scaleName=Jaitsri" className="sub-menu-item">Jaitsri</a></li>
+                                          <li><a href="search?scaleName=Jaunpuri" className="sub-menu-item">Jaunpuri (raga)</a></li>
+                                          <li><a href="search?scaleName=Jhinjhoti" className="sub-menu-item">Jhinjhoti</a></li>
+                                          <li><a href="search?scaleName=Jog" className="sub-menu-item">Jog (raga)</a></li>
+                                          <li><a href="search?scaleName=Jogiya" className="sub-menu-item">Jogiya (raga)</a></li>
+                                          <li><a href="search?scaleName=Chhayanat" className="sub-menu-item">XXXX </a></li>
+                                          <li><a href="search?scaleName=Chhayanat" className="sub-menu-item">XXX (raga) </a></li>
+                                          <li><a href="search?scaleName=Chhayanat" className="sub-menu-item">XXX (raga)</a></li>
+                                          <li><a href="search?scaleName=Chhayanat" className="sub-menu-item">XXX Bhairav </a></li>
                                       </ul>
                                   </li>
 
                                   <li>
                                       <ul>
-                                          <li><a href="index-saas.html" className="sub-menu-item">Abhogi <span className="bg-emerald-600 inline-block text-white text-[10px] font-bold px-2.5 py-0.5 rounded h-5 ms-1">Animation</span></a></li>
-                                          <li><a href="index-classNameic-saas.html" className="sub-menu-item">Adana (raga) </a></li>
-                                          <li><a href="index-modern-saas.html" className="sub-menu-item">Amritvarshini (raga) </a></li>
-                                          <li><a href="index-apps.html" className="sub-menu-item">Asa (raga)</a></li>
-                                          <li><a href="index-classNameic-app.html" className="sub-menu-item">Asavari </a></li>
-                                          <li><a href="#" className="sub-menu-item">Bageshri <span className="bg-red-600 inline-block text-white text-[10px] font-bold px-2.5 py-0.5 rounded h-5 ms-1">Comingsoon</span></a></li>
-                                          <li><a href="index-smartwatch.html" className="sub-menu-item">Bahar (raga)</a></li>
-                                          <li><a href="index-marketing.html" className="sub-menu-item">Bairagi (raga)</a></li>
-                                          <li><a href="index-seo.html" className="sub-menu-item">Bairari </a></li>
-                                          <li><a href="index-software.html" className="sub-menu-item">Barwa (raga) </a></li>
-                                          <li><a href="index-payment.html" className="sub-menu-item">Basant (raga)</a></li>
-                                          <li><a href="index-charity.html" className="sub-menu-item">Ahir Bhairav </a></li>
+                                          <li><a href="search?scaleName=Chhayanat" className="sub-menu-item">XXX</a></li>
+                                          <li><a href="search?scaleName=Chhayanat" className="sub-menu-item">XXX (raga) </a></li>
+                                          <li><a href="search?scaleName=Chhayanat" className="sub-menu-item">XXXX (raga) </a></li>
+                                          <li><a href="search?scaleName=Chhayanat" className="sub-menu-item">XXXX (raga)</a></li>
+                                          <li><a href="search?scaleName=Chhayanat" className="sub-menu-item">XXXX </a></li>
+                                          <li><a href="#" className="sub-menu-item">Bageshri</a></li>
+                                          <li><a href="search?scaleName=Chhayanat" className="sub-menu-item">XXX (raga)</a></li>
+                                          <li><a href="search?scaleName=Chhayanat" className="sub-menu-item">BairXXagi (raga)</a></li>
+                                          <li><a href="search?scaleName=Chhayanat" className="sub-menu-item">Bairari </a></li>
+                                          <li><a href="search?scaleName=Chhayanat" className="sub-menu-item">Barwa (raga) </a></li>
+                                          <li><a href="search?scaleName=Chhayanat" className="sub-menu-item">Basant (raga)</a></li>
+                                          <li><a href="search?scaleName=Chhayanat" className="sub-menu-item">Ahir Bhairav </a></li>
                                       </ul>
                                   </li>
 
@@ -285,21 +303,21 @@ export default function Navigation ({ className }) {
                           <li className="has-submenu parent-menu-item">
                               <a href="#">Genres</a><span className="menu-arrow"></span>
                               <ul className="submenu">
-                                  <li><a href="/genre/blues" className="sub-menu-item">Blues</a></li>
-                                  <li><a href="/genres/classical" className="sub-menu-item">Classical</a></li>
-                                  <li><a href="genres/country" className="sub-menu-item">Country</a></li>
-                                  <li><a href="genres/disco" className="sub-menu-item">Disco</a></li>
-                                  <li><a href="genres/electronic" className="sub-menu-item">Electronic</a></li>
-                                  <li><a href="genres/experimental" className="sub-menu-item">experimental</a></li>
-                                  <li><a href="genres/folk" className="sub-menu-item">Folk</a></li>
-                                  <li><a href="genres/hip-Hop" className="sub-menu-item">Hip hop</a></li>
-                                  <li><a href="genres/jazz" className="sub-menu-item">Jazz</a></li>
-                                  <li><a href="genres/metal" className="sub-menu-item">Metal</a></li>
-                                  <li><a href="genres/pop" className="sub-menu-item">Pop</a></li>
-                                  <li><a href="genres/rap" className="sub-menu-item">Rap</a></li>
-                                  <li><a href="genres/r&b-funk-soul" className="sub-menu-item">R&b, Funk & Soul</a></li>
-                                  <li><a href="genres/religious-music" className="sub-menu-item">Religious Music</a></li>
-                                  <li><a href="genres/rock" className="sub-menu-item">Rock</a></li>
+                                  <li><a href="/search?genre=blues" className="sub-menu-item">Blues</a></li>
+                                  <li><a href="/search?genre=Western%20classical" className="sub-menu-item">Classical</a></li>
+                                  <li><a href="search?genre=country" className="sub-menu-item">Country</a></li>
+                                  <li><a href="search?genre=disco" className="sub-menu-item">Disco</a></li>
+                                  <li><a href="search?genre=electronic" className="sub-menu-item">Electronic</a></li>
+                                  <li><a href="search?genre=folk" className="sub-menu-item">Folk</a></li>
+                                  <li><a href="search?genre=hip-Hop" className="sub-menu-item">Hip hop</a></li>
+                                  <li><a href="search?genre=Indian" className="sub-menu-item">Indian</a></li>
+                                  <li><a href="search?genre=jazz" className="sub-menu-item">Jazz</a></li>
+                                  <li><a href="search?genre=metal" className="sub-menu-item">Metal</a></li>
+                                  <li><a href="search?genre=pop" className="sub-menu-item">Pop</a></li>
+                                  <li><a href="search?genre=rap" className="sub-menu-item">Rap</a></li>
+                                  <li><a href="search?genre=r&b-funk-soul" className="sub-menu-item">R&b, Funk & Soul</a></li>
+                                  <li><a href="search?genre=religious-music" className="sub-menu-item">Religious Music</a></li>
+                                  <li><a href="search?genre=rock" className="sub-menu-item">Rock</a></li>
                               </ul>
                           </li>                  
                          
