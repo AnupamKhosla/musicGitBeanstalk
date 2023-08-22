@@ -22,6 +22,7 @@
     "opensheetmusicdisplay": "^1.8.2",
     "react": "^18.2.0",
     "react-dom": "latest",
+    "react-paginate": "^8.2.0",
     "react-router-dom": "latest",
     "react-scripts": "latest",
     "shufflejs": "^6.1.0",

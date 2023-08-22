@@ -72,7 +72,7 @@ export default function App() {
    
       <section className="relative">
         <div className="container relative min-h-[40rem]">   
-          { post.sheetName && <OpenSheetMusicDisplay file={"/sheets/" + post.sheetName} /> }
+          { post.sheetName && <OpenSheetMusicDisplay file={"/sheets/" + post.sheetName + ".xml"} /> }
         </div>           
       </section>
 

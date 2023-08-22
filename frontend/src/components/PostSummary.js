@@ -18,7 +18,7 @@ export default function PostSummary(props) {
                 {props.scale}
               </p>
               <p className="text-slate-400 mt-2">
-                <i className="uil uil-clock text-rose-600"></i> Uploaded on {(new Date(props.date)).toLocaleDateString()}
+                <i className="uil uil-clock text-rose-600"></i> Released on {(new Date(props.date)).toLocaleDateString()}
               </p>
 
               <div className="mt-4">

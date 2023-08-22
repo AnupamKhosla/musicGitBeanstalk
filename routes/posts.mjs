@@ -5,19 +5,41 @@ import "../loadEnvironment.mjs";
 
 const router = express.Router();
 
-// Get a list of 50 songs
-router.get("/", async (req, res) => {
-  //check for get variables in the url  
+
+//get total number of results
+router.get("/count", async (req, res) => {
   let query = {};
   if (req.query.songName) query.sheetName = {$regex: req.query.songName, $options: "i"};
   if (req.query.artistName) query.Artist = {$regex: req.query.artistName, $options: "i"};
   if (req.query.scaleName) query.scale = {$regex: req.query.scaleName, $options: "i"};
   if (req.query.genre) query.Genres = {$regex: req.query.genre, $options: "i"};
   if (req.query.date) query.date = {$regex: req.query.date, $options: "i"};
+  let collection = await db.collection("songs");
+  let result_count = await collection.find(query).count();
+  res.send({"count": result_count}).status(200);
+});
+
+
+
+// Get a list of 50 songs
+router.get("/", async (req, res) => {
+  //check for get variables in the url  
+  let page = 1;
+  let query = {};
+  if (req.query.songName) query.sheetName = {$regex: req.query.songName, $options: "i"};
+  if (req.query.artistName) query.Artist = {$regex: req.query.artistName, $options: "i"};
+  if (req.query.scaleName) query.scale = {$regex: req.query.scaleName, $options: "i"};
+  if (req.query.genre) query.Genres = {$regex: req.query.genre, $options: "i"};
+  if (req.query.date) query.date = {$regex: req.query.date, $options: "i"};
+  if (!!req.query.page) {
+    page = parseInt(req.query.page);
+  }
+
 
   let collection = await db.collection("songs");
-  let results = await collection.find(query)
-    .limit(50)
+  let results = await collection.find(query,  {"sort" : ['date', 'asc']})
+    .skip(parseInt(page-1) * 6)
+    .limit(6)
     .toArray();
 
 
