@@ -8,8 +8,6 @@ import { useNavigate } from "react-router-dom";
 
 
 export default function SearchForm(props) {
-
-
 	//get url get variables
 	let url = new URL(window.location.href);
 	let songName = url.searchParams.get("songName");
@@ -66,6 +64,7 @@ export default function SearchForm(props) {
 	                                      className="pl-10 form-input lg:rounded-t-sm lg:rounded-e-none lg:rounded-b-none lg:rounded-s-sm lg:outline-0 w-full filter-input-box bg-gray-100 dark:bg-slate-800 border-0 focus:ring-0"
 	                                      placeholder="E.g. Sonata"
 	                                      defaultValue={songName} 
+	                                      key={songName}
 	                                    />
 	                                </div>
 	                                <div className="ml-2 filter-search-form relative ">
@@ -77,6 +76,7 @@ export default function SearchForm(props) {
 	                                      className="form-input lg:rounded-t-sm lg:rounded-e-none lg:rounded-b-none lg:rounded-s-sm lg:outline-0 w-full filter-input-box bg-gray-100 dark:bg-slate-800 border-0 focus:ring-0"
 	                                      placeholder="E.g. Mozart" 
 	                                      defaultValue={artistName}
+	                                      key={artistName}
 	                                    />
 	                                </div>
 	                                <div className="ml-2 filter-search-form relative ">
@@ -88,6 +88,7 @@ export default function SearchForm(props) {
 	                                      className="form-input lg:rounded-t-sm lg:rounded-e-none lg:rounded-b-none lg:rounded-s-sm lg:outline-0 w-full filter-input-box bg-gray-100 dark:bg-slate-800 border-0 focus:ring-0"
 	                                      placeholder="E.g. Major" 
 	                                      defaultValue={scaleName}
+	                                      key={scaleName}
 	                                    />
 	                                </div>
 	                                <div className="lg:mt-6 flex items-end">

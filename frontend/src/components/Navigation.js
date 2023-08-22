@@ -14,6 +14,31 @@ function toggleMenu() {
         isOpen.style.display = "block";
     }
 };
+
+//on click anywhere if toggle is open close it
+window.onclick = function (event) {
+    document.querySelectorAll('#topnav .navigation-menu > li.has-submenu:hover > .submenu').forEach(function (elem) {
+      elem.style.display = 'none';
+      //remove these styles after 0.2 seconds
+      setTimeout(function () {
+          elem.removeAttribute('style');
+      }, 200);
+    });
+
+    //check if event propogated from '#topnav .navigation-menu > li .submenu li a'
+    if (event.target.matches('#topnav .navigation-menu > li .submenu li a')) {
+        // if (document.getElementById('isToggle').classList.contains('open')) {
+        //     document.getElementById('isToggle').classList.remove('open');
+        //     document.getElementById('navigation').style.display = "none";
+        // }
+        toggleMenu();
+    }
+
+};
+
+
+
+
 /*********************/
 /*    Menu Active    */
 /*********************/
@@ -309,21 +334,21 @@ export default function Navigation ({ className }) {
                           <li className="has-submenu parent-menu-item">
                               <a href="#">Genres</a><span className="menu-arrow"></span>
                               <ul className="submenu">
-                                  <li><a href="/search?genre=blues" className="sub-menu-item">Blues</a></li>
-                                  <li><a href="/search?genre=Western%20classical" className="sub-menu-item">Classical</a></li>
-                                  <li><a href="search?genre=country" className="sub-menu-item">Country</a></li>
-                                  <li><a href="search?genre=disco" className="sub-menu-item">Disco</a></li>
-                                  <li><a href="search?genre=electronic" className="sub-menu-item">Electronic</a></li>
-                                  <li><a href="search?genre=folk" className="sub-menu-item">Folk</a></li>
-                                  <li><a href="search?genre=hip-Hop" className="sub-menu-item">Hip hop</a></li>
-                                  <li><a href="search?genre=Indian" className="sub-menu-item">Indian</a></li>
-                                  <li><a href="search?genre=jazz" className="sub-menu-item">Jazz</a></li>
-                                  <li><a href="search?genre=metal" className="sub-menu-item">Metal</a></li>
-                                  <li><a href="search?genre=pop" className="sub-menu-item">Pop</a></li>
-                                  <li><a href="search?genre=rap" className="sub-menu-item">Rap</a></li>
-                                  <li><a href="search?genre=r&b-funk-soul" className="sub-menu-item">R&b, Funk & Soul</a></li>
-                                  <li><a href="search?genre=religious-music" className="sub-menu-item">Religious Music</a></li>
-                                  <li><a href="search?genre=rock" className="sub-menu-item">Rock</a></li>
+                                  <li><Link to="/search?genre=blues" className="sub-menu-item">Blues</Link></li>
+                                  <li><Link to="/search?genre=Western%20classical" className="sub-menu-item">Classical</Link></li>
+                                  <li><Link to="search?genre=country" className="sub-menu-item">Country</Link></li>
+                                  <li><Link to="search?genre=disco" className="sub-menu-item">Disco</Link></li>
+                                  <li><Link to="search?genre=electronic" className="sub-menu-item">Electronic</Link></li>
+                                  <li><Link to="search?genre=folk" className="sub-menu-item">Folk</Link></li>
+                                  <li><Link to="search?genre=hip-Hop" className="sub-menu-item">Hip hop</Link></li>
+                                  <li><Link to="search?genre=Indian" className="sub-menu-item">Indian</Link></li>
+                                  <li><Link to="search?genre=jazz" className="sub-menu-item">Jazz</Link></li>
+                                  <li><Link to="search?genre=metal" className="sub-menu-item">Metal</Link></li>
+                                  <li><Link to="search?genre=pop" className="sub-menu-item">Pop</Link></li>
+                                  <li><Link to="search?genre=rap" className="sub-menu-item">Rap</Link></li>
+                                  <li><Link to="search?genre=r&b-funk-soul" className="sub-menu-item">R&b, Funk & Soul</Link></li>
+                                  <li><Link to="search?genre=religious-music" className="sub-menu-item">Religious Music</Link></li>
+                                  <li><Link to="search?genre=rock" className="sub-menu-item">Rock</Link></li>
                               </ul>
                           </li>                  
                          
