@@ -10,7 +10,7 @@ import cors from "cors";
 import "./loadEnvironment.mjs";
 import "express-async-errors";
 import posts from "./routes/posts.mjs";
-import db from "./db/conn.mjs";
+//import db from "./db/conn.mjs"; //Uncomment-debug if db connection doesn't work
 
 
 const PORT = process.env.PORT || 5050;

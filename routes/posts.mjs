@@ -14,14 +14,14 @@ router.get("/count", async (req, res) => {
   if (req.query.scaleName) query.scale = {$regex: req.query.scaleName, $options: "i"};
   if (req.query.genre) query.Genres = {$regex: req.query.genre, $options: "i"};
   if (req.query.date) query.date = {$regex: req.query.date, $options: "i"};
-  let collection = await db.collection("songs");
+  let collection = await db.collection("musicsheets");
   let result_count = await collection.find(query).count();
   res.send({"count": result_count}).status(200);
 });
 
 
 
-// Get a list of 50 songs
+// Get a list of 50 musicsheets
 router.get("/", async (req, res) => {
   //check for get variables in the url  
   let page = 1;
@@ -36,14 +36,14 @@ router.get("/", async (req, res) => {
   }
 
 
-  let collection = await db.collection("songs");
+  let collection = await db.collection("musicsheets");
   let results = await collection.find(query,  {"sort" : ['date', 'asc']})
     .skip(parseInt(page-1) * 6)
     .limit(6)
     .toArray();
 
 
-  // let collection = await db.collection("songs");
+  // let collection = await db.collection("musicsheets");
   // let results = await collection.find({})
   //   .limit(50)
   //   .toArray();
@@ -51,9 +51,9 @@ router.get("/", async (req, res) => {
   res.send(results).status(200);
 });
 
-// Fetches the latest songs
+// Fetches the latest musicsheets
 router.get("/latest", async (req, res) => {
-  let collection = await db.collection("songs");
+  let collection = await db.collection("musicsheets");
   let results = await collection.aggregate([
     {"$project": {"Artist": 1, "sheetName": 1, "Genres": 1, "scale": 1, "date": 1}},
     {"$sort": {"date": -1}},
@@ -64,7 +64,7 @@ router.get("/latest", async (req, res) => {
 
 // Get a single post
 router.get("/:id", async (req, res) => {  
-  let collection = await db.collection("songs");
+  let collection = await db.collection("musicsheets");
   let query = {_id: new ObjectId(req.params.id)}; //ObjectId behaviour is changed to include "new" in latest mongodb driver
   let result = await collection.findOne(query);
   if (!result) res.send("Not found").status(404);
@@ -73,7 +73,7 @@ router.get("/:id", async (req, res) => {
 
 // Add a new document to the collection
 router.post("/", async (req, res) => {
-  let collection = await db.collection("songs");
+  let collection = await db.collection("musicsheets");
   let newDocument = req.body;
   newDocument.date = new Date();
   //let result = await collection.insertOne(newDocument); //create functionality stopped for the time being
@@ -88,7 +88,7 @@ router.post("/", async (req, res) => {
 //   const updates = {
 //     $push: { comments: req.body }
 //   };
-//   let collection = await db.collection("songs");
+//   let collection = await db.collection("musicsheets");
 //   let result = await collection.updateOne(query, updates);
 //   res.send({ comments: req.body }).status(200);
 // });
@@ -96,7 +96,7 @@ router.post("/", async (req, res) => {
 // Delete an entry
 router.delete("/:id", async (req, res) => {
   if(req.body.pass == process.env.DELETE_KEY){
-    let collection = await db.collection("songs");
+    let collection = await db.collection("musicsheets");
     let query = {_id: new ObjectId(req.params.id)};
     let result = await collection.deleteOne(query);
     res.send(result).status(200);
