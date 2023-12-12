@@ -10,7 +10,7 @@ console.log("Wrote baseUrl to frontend/src/config.js");
 //use try catch
 try {  
   if(process.env.PRODUCTION == "render") { //render.com server
-    fs.writeFileSync('./frontend/src/config.js', `export const baseUrl = 'https://musicsheets.onrender.com';`);    
+    fs.writeFileSync('./frontend/src/config.js', `export const baseUrl = 'musicsheets.onrender.com';`);    
     console.log("Wrote https://musicsheets.onrender.com to config.js");
   }
   else if(!!process.env.PARTITION) { //you might use NODE_ENV
